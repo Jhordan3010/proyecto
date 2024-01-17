@@ -1,0 +1,50 @@
+body {
+    background-image: url('../imagenes/fondo.jpg');
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    color: #f2f2f2;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    color: #040404;
+    background-color: #FFFF00;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.menu-button, .edit-link, .view-evaluation-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e5cc0d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.menu-button:hover, .edit-link:hover, .view-evaluation-link:hover {
+    background-color: #e5cc0d;
+}
