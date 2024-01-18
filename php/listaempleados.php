@@ -31,7 +31,7 @@
     $conn = conectar("midb_Proyecto");
 
     $sql = "SELECT persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, 
-                   empleado.cargo_empleado, empleado.sueldo_empleado
+                   empleado.cargo_empleado, empleado.sueldo_empleado, empleado.cv, empleado.cedula_escaneada, empleado.titulo
             FROM persona
             LEFT JOIN empleado ON persona.id_persona = empleado.id_persona";
 
@@ -52,6 +52,9 @@
                 <th>Email</th>
                 <th>Cargo Empleado</th>
                 <th>Sueldo Empleado</th>
+                <th>CV</th>
+                <th>Cédula Escaneada</th>
+                <th>Título</th>
                 <th>Acciones</th>
               </tr>";
 
@@ -65,6 +68,9 @@
             echo "<td>" . $fila['email'] . "</td>";
             echo "<td>" . $fila['cargo_empleado'] . "</td>";
             echo "<td>" . $fila['sueldo_empleado'] . "</td>";
+            echo "<td><a href='" . $fila['cv'] . "' target='_blank'>Ver CV</a></td>";
+            echo "<td><a href='" . $fila['cedula_escaneada'] . "' target='_blank'>Ver Cédula Escaneada</a></td>";
+            echo "<td><a href='" . $fila['titulo'] . "' target='_blank'>Ver Título</a></td>";
             echo "<td>
                     <a class='edit-link' href='editar.php?CI=" . $fila['CI'] . "'>Editar</a> 
                   </td>";
@@ -83,8 +89,4 @@
     <a href="ver_todas_evaluaciones.php" class="menu-button">Ver Todas las Evaluaciones</a>
 </body>
 </html>
-
-
-</
-
 
