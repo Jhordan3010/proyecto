@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<<<<<<< Updated upstream
-=======
+
     <link rel="stylesheet" href="../css/contrato.css">
->>>>>>> Stashed changes
     <meta charset="UTF-8">
     <title>Contratar Postulante</title>
     <link rel="stylesheet" href="../css/listaempleados.css">
