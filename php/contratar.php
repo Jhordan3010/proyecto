@@ -25,6 +25,7 @@ function conectar($dbname)
 
     return $conn;
 }
+// ...
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["cedula"])) {
@@ -42,12 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error en la consulta SQL: " . $conn->error;
         } else {
             if ($resultBuscarPostulante->num_rows > 0) {
-                echo "<form action='' method='post'>";
+                echo "<form action='' method='post' enctype='multipart/form-data'>";
                 echo "<label for='postulante_id'>Seleccionar Postulante:</label>";
                 echo "<select name='postulante_id' required>";
 
                 while ($rowPersona = $resultBuscarPostulante->fetch_assoc()) {
-                    echo "<option value='" . htmlspecialchars($rowPersona['id_persona']) . "'>" . htmlspecialchars($rowPersona['nombre']) . " " . htmlspecialchars($rowPersona['apellido']) . " - CI: " . htmlspecialchars($rowPersona['CI']) . "</option>";
+                    echo "<option value='" . htmlspecialchars($rowPersona['id_postulante']) . "'>" . htmlspecialchars($rowPersona['nombre']) . " " . htmlspecialchars($rowPersona['apellido']) . " - CI: " . htmlspecialchars($rowPersona['CI']) . "</option>";
                 }
 
                 echo "</select>";
@@ -80,9 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $row = $resultObtenerInfoPostulante->fetch_assoc();
 
-            // Obtener el id_persona del postulante seleccionado
-            $id_persona = $row['id_persona'];
-
             // Verificar si el postulante ya ha sido contratado
             $sqlVerificarContratacion = "SELECT * FROM empleado WHERE id_postulante = $postulante_id";
             $resultVerificarContratacion = $conn->query($sqlVerificarContratacion);
@@ -94,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // ...
 
                 // Actualizar la tabla de empleados
-                $sqlInsert = "INSERT INTO empleado (id_postulante, id_persona, sueldo_empleado, cargo_empleado, cv, cedula_escaneada, titulo)
-                              VALUES ($postulante_id, $id_persona, $sueldo, '{$row['cargo_postulante']}', '{$row['cv']}', '{$row['cedula_escaneada']}', '{$row['estudios_postulante']}')";
+                $sqlInsert = "INSERT INTO empleado (id_persona, sueldo_empleado, cargo_empleado, cv, cedula_escaneada, titulo)
+                              VALUES ({$row['id_persona']}, $sueldo, '{$row['cargo_postulante']}', '{$row['cv']}', '{$row['cedula_escaneada']}', '{$row['estudios_postulante']}')";
                 $resultInsert = $conn->query($sqlInsert);
 
                 if ($resultInsert === FALSE) {
@@ -104,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     echo "<p>Postulante contratado con éxito.</p>";
 
-                    // Eliminar al postulante de la tabla postulante
+                    // Resto del código para eliminar el postulante de la tabla postulante
                     $sqlEliminarPostulante = "DELETE FROM postulante WHERE id_postulante = $postulante_id";
                     $resultEliminarPostulante = $conn->query($sqlEliminarPostulante);
 
@@ -122,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     <label for="cedula">Buscar por Cédula:</label>
     <input type="text" name="cedula" required>
     <input type="submit" value="Buscar">
@@ -130,3 +128,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
+
