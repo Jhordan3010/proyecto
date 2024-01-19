@@ -30,10 +30,12 @@
 
     $conn = conectar("midb_Proyecto");
 
+    // Asegúrate de que la columna id_persona esté en la tabla persona
     $sql = "SELECT persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, 
                    empleado.cargo_empleado, empleado.sueldo_empleado, empleado.cv, empleado.cedula_escaneada, empleado.titulo
             FROM persona
-            LEFT JOIN empleado ON persona.id_persona = empleado.id_persona";
+            LEFT JOIN empleado ON persona.id_persona = empleado.id_persona
+            WHERE empleado.id_empleado IS NOT NULL";  // Agregamos esta condición
 
     $resultado = $conn->query($sql);
 
@@ -79,7 +81,7 @@
 
         echo "</table>";
     } else {
-        echo "No se encontraron empleados.";
+        echo "No se encontraron empleados con id_empleado.";
     }
 
     $conn->close();

@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Contratar Postulante</title>
     <link rel="stylesheet" href="../css/listaempleados.css">
+</head>
 <body>
 
 <h2>Contratar Postulante</h2>
 
 <?php
-// Tu función conectar
 function conectar($dbname)
 {
     $servername = 'localhost';
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn = conectar("midb_proyecto");
         $cedula = mysqli_real_escape_string($conn, $_POST["cedula"]);
 
-        $sqlBuscarPostulante = "SELECT persona.id_persona, persona.nombre, persona.apellido, persona.CI, postulante.id_postulante
+        $sqlBuscarPostulante = "SELECT persona.id_persona, persona.nombre, persona.apellido, persona.CI, postulante.id_postulante, postulante.cargo_postulante, postulante.cv, postulante.cedula_escaneada, postulante.estudios_postulante
                                 FROM persona
                                 LEFT JOIN postulante ON persona.id_persona = postulante.id_persona
                                 WHERE persona.CI = '$cedula'";
@@ -71,26 +71,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $postulante_id = mysqli_real_escape_string($conn, $_POST["postulante_id"]);
         $sueldo = mysqli_real_escape_string($conn, $_POST["sueldo"]);
 
-        // Verificar si el postulante ya ha sido contratado
-        $sqlVerificarContratacion = "SELECT * FROM empleado WHERE id_postulante = $postulante_id";
-        $resultVerificarContratacion = $conn->query($sqlVerificarContratacion);
+        // Obtener información del postulante seleccionado
+        $sqlObtenerInfoPostulante = "SELECT * FROM postulante WHERE id_postulante = $postulante_id";
+        $resultObtenerInfoPostulante = $conn->query($sqlObtenerInfoPostulante);
 
-        if ($resultVerificarContratacion->num_rows > 0) {
-            echo "<p>Este postulante ya ha sido contratado anteriormente.</p>";
+        if ($resultObtenerInfoPostulante === FALSE) {
+            echo "Error en la consulta SQL: " . $conn->error;
         } else {
-            // Continuar con el proceso de contratación
-            // ...
+            $row = $resultObtenerInfoPostulante->fetch_assoc();
 
-            // Actualizar la tabla de empleados
-            $sqlInsert = "INSERT INTO empleado (id_postulante, sueldo_empleado, cargo_empleado, cv, cedula_escaneada, titulo)
-                          VALUES ($postulante_id, $sueldo, '{$row['cargo_postulante']}', '{$row['cv']}', '{$row['cedula_escaneada']}', '{$row['estudios_postulante']}')";
-            $resultInsert = $conn->query($sqlInsert);
+            // Obtener el id_persona del postulante seleccionado
+            $id_persona = $row['id_persona'];
 
-            if ($resultInsert === FALSE) {
-                echo "Error al contratar al postulante: " . $conn->error;
-                echo "Consulta SQL: " . $sqlInsert;
+            // Verificar si el postulante ya ha sido contratado
+            $sqlVerificarContratacion = "SELECT * FROM empleado WHERE id_postulante = $postulante_id";
+            $resultVerificarContratacion = $conn->query($sqlVerificarContratacion);
+
+            if ($resultVerificarContratacion->num_rows > 0) {
+                echo "<p>Este postulante ya ha sido contratado anteriormente.</p>";
             } else {
-                echo "<p>Postulante contratado con éxito.</p>";
+                // Continuar con el proceso de contratación
+                // ...
+
+                // Actualizar la tabla de empleados
+                $sqlInsert = "INSERT INTO empleado (id_postulante, id_persona, sueldo_empleado, cargo_empleado, cv, cedula_escaneada, titulo)
+                              VALUES ($postulante_id, $id_persona, $sueldo, '{$row['cargo_postulante']}', '{$row['cv']}', '{$row['cedula_escaneada']}', '{$row['estudios_postulante']}')";
+                $resultInsert = $conn->query($sqlInsert);
+
+                if ($resultInsert === FALSE) {
+                    echo "Error al contratar al postulante: " . $conn->error;
+                    echo "Consulta SQL: " . $sqlInsert;
+                } else {
+                    echo "<p>Postulante contratado con éxito.</p>";
+
+                    // Eliminar al postulante de la tabla postulante
+                    $sqlEliminarPostulante = "DELETE FROM postulante WHERE id_postulante = $postulante_id";
+                    $resultEliminarPostulante = $conn->query($sqlEliminarPostulante);
+
+                    if ($resultEliminarPostulante === FALSE) {
+                        echo "Error al eliminar el postulante: " . $conn->error;
+                        echo "Consulta SQL: " . $sqlEliminarPostulante;
+                    }
+                }
             }
         }
 
