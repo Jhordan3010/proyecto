@@ -60,24 +60,24 @@
                 <th>Acciones</th>
               </tr>";
 
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $fila['CI'] . "</td>";
-            echo "<td>" . $fila['nombre'] . "</td>";
-            echo "<td>" . $fila['apellido'] . "</td>";
-            echo "<td>" . $fila['direccion'] . "</td>";
-            echo "<td>" . $fila['telefono'] . "</td>";
-            echo "<td>" . $fila['email'] . "</td>";
-            echo "<td>" . $fila['cargo_empleado'] . "</td>";
-            echo "<td>" . $fila['sueldo_empleado'] . "</td>";
-            echo "<td><a href='" . $fila['cv'] . "' target='_blank'>Ver CV</a></td>";
-            echo "<td><a href='" . $fila['cedula_escaneada'] . "' target='_blank'>Ver Cédula Escaneada</a></td>";
-            echo "<td><a href='" . $fila['titulo'] . "' target='_blank'>Ver Título</a></td>";
-            echo "<td>
-                    <a class='edit-link' href='editar.php?CI=" . $fila['CI'] . "'>Editar</a> 
-                  </td>";
-            echo "</tr>";
-        }
+              while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                          <td>{$row['id_postulante']}</td>
+                          <td>{$row['CI']}</td>
+                          <td>{$row['nombre']}</td>
+                          <td>{$row['apellido']}</td>
+                          <td>{$row['direccion']}</td>
+                          <td>{$row['telefono']}</td>
+                          <td>{$row['email']}</td>   
+                          <td>{$row['cargo_postulante']}</td>
+                          <td><a href='../pdf/cv/{$row['cv']}' target='_blank'>Ver CV</a></td>
+                          <td><a href='../pdf/cedulas/{$row['cedulas']}' target='_blank'>Ver Cédula</a></td>
+                          <td><a href='../pdf/estudios_postulante/{$row['estudios_postulante']}' target='_blank'>Ver título</a></td>
+                      </tr>";
+            }
+            
+            
+            
 
         echo "</table>";
     } else {

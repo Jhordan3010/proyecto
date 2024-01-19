@@ -1,93 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Empleados</title>
-    <link rel="stylesheet" href="../css/listaempleados.css">
+  <meta charset="UTF-8">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="../css/postular.css">
+  <link rel="stylesheet" href="../JavaScript/LoogginJS.js">
 </head>
 <body>
-    <header>
-        <h1>Lista de Empleados</h1>
-    </header>
 
-    <?php
-    function conectar($dbname)
-    {
-        $servername = 'localhost';
-        $username = 'Jhordan';
-        $password = '123456789';
-        $port = 3306;
+  <header>
+    <h1>Concesionario</h1>
+  </header>
+  <main>
+    <section>
+      <img src="../imagenes/renault.png" alt="">
+      <h2>Postular</h2>
 
-        $conn = new mysqli($servername, $username, $password, $dbname, $port);
+      <form id="login-form" method="post" enctype="multipart/form-data">
+        <article class="formulario">
+          <div class="datos">
+              <label for="CI">Cédula</label>
+              <label for="nombre">Nombre</label>
+              <label for="apellido">Apellido</label>
+              <label for="direccion">Dirección</label>
+              <label for="telefono">Teléfono</label>
+              <label for="email">E-mail</label>
+          </div>
+          <div class="campos">
+              <input type="text" name="CI">
+              <input type="text" name="nombre" required>
+              <input type="text" name="apellido" required>
+              <input type="text" name="direccion" required>
+              <input type="text" name="telefono" required>
+              <input type="text" name="correo" required>
+          </div>
+      </article>
 
-        if ($conn->connect_error) {
-            die("Conexión a base de datos falló: " . $conn->connect_error);
-        }
+      <article class="input-group">
+        <label for="cargo_postulante">Cargo a Postular</label>
+        <select class="lista" name="cargo_postulante" id="" required>
+            <option value="Gerente de ventas">Gerente de ventas</option>
+            <option value="Recepcionista">Recepcionista</option>
+            <option value="Gerente General">Gerente General</option>
+            <option value="Técnico de servicio mecánico">Técnico de servicio mecánico</option>
+        </select>
+      </article>
 
-        return $conn;
+      <article class="documentos">
+        <div class="adjuntos1">
+          <label for="cv">Adjuntar CV</label>
+          <label for="cedula-pdf">Cédula Escaneada</label>
+          <label for="estudios">Estudios-Postulante</label>
+        </div>
+        <div class="adjuntos2">
+          <input id="subir-pdf" type="file" name="cv" accept=".pdf" required>
+          <input id="subir-pdf" type="file" name="cedula-pdf" accept=".pdf" required>
+          <input id="subir-pdf" type="file" name="estudios" accept=".pdf" required>
+        </div>
+      </article>
+      <button type="submit">Enviar</button>
+
+    </form>
+    <p id="error-message" class="error-message"></p>
+  </section>
+
+</main>
+<?php
+// Verificar si el formulario ha sido enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtener los datos del formulario
+    $CI = $_POST["CI"];
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $direccion = $_POST["direccion"];
+    $telefono = $_POST["telefono"];
+    $correo = $_POST["correo"];
+    $cargo = $_POST["cargo_postulante"];
+
+    // Aquí deberías realizar la conexión a tu base de datos
+    $servername = 'localhost';
+    $username = 'Jhordan';
+    $password = '123456789';
+    $dbname = 'midb_proyecto';
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Conexión a la base de datos falló: " . $conn->connect_error);
     }
 
-    $conn = conectar("midb_Proyecto");
+    // Insertar en la tabla persona
+    $sqlInsertPersona = "INSERT INTO persona (CI, nombre, apellido, direccion, telefono, email) 
+                         VALUES ('$CI', '$nombre', '$apellido', '$direccion', '$telefono', '$correo')";
+    $resultInsertPersona = $conn->query($sqlInsertPersona);
 
-    // Suponiendo que la columna id_empleados está en la tabla empleado
-    $sql = "SELECT persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, 
-                   empleado.cargo_empleado, empleado.sueldo_empleado, empleado.cv, empleado.cedula_escaneada, empleado.titulo
-            FROM persona
-            LEFT JOIN empleado ON persona.id_persona = empleado.id_persona
-            WHERE empleado.id_empleados IS NOT NULL";  // Asegúrate de ajustar esta condición según tu estructura de base de datos
-
-    $resultado = $conn->query($sql);
-
-    if (!$resultado) {
-        die("Error en la consulta: " . $conn->error);
-    }
-
-    if ($resultado->num_rows > 0) {
-        echo "<table border='1'>";
-        echo "<tr>
-                <th>Cédula</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th>Cargo Empleado</th>
-                <th>Sueldo Empleado</th>
-                <th>CV</th>
-                <th>Cédula Escaneada</th>
-                <th>Título</th>
-                <th>Acciones</th>
-              </tr>";
-
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $fila['CI'] . "</td>";
-            echo "<td>" . $fila['nombre'] . "</td>";
-            echo "<td>" . $fila['apellido'] . "</td>";
-            echo "<td>" . $fila['direccion'] . "</td>";
-            echo "<td>" . $fila['telefono'] . "</td>";
-            echo "<td>" . $fila['email'] . "</td>";
-            echo "<td>" . $fila['cargo_empleado'] . "</td>";
-            echo "<td>" . $fila['sueldo_empleado'] . "</td>";
-            echo "<td><a href='" . $fila['cv'] . "' target='_blank'>Ver CV</a></td>";
-            echo "<td><a href='" . $fila['cedula_escaneada'] . "' target='_blank'>Ver Cédula Escaneada</a></td>";
-            echo "<td><a href='" . $fila['titulo'] . "' target='_blank'>Ver Título</a></td>";
-            echo "<td>
-                    <a class='edit-link' href='editar.php?CI=" . $fila['CI'] . "'>Editar</a> 
-                  </td>";
-            echo "</tr>";
-        }
-
-        echo "</table>";
+    if ($resultInsertPersona === FALSE) {
+        echo "Error al insertar en la tabla persona: " . $conn->error;
     } else {
-        echo "No se encontraron empleados.";
+        // Obtener el ID de la persona recién insertada
+        $id_persona = $conn->insert_id;
+
+        // Rutas de las carpetas
+        $pdfFolder = "../pdf/";
+        $cvFolder = $pdfFolder . "cv/";
+        $cedulaFolder = $pdfFolder . "cedulas/";
+        $estudiosFolder = $pdfFolder . "estudios_postulante/";
+
+        // Asegurarse de que las carpetas existan
+        $carpetas = [$cvFolder, $cedulaFolder, $estudiosFolder];
+
+        foreach ($carpetas as $carpeta) {
+            if (!is_dir($carpeta)) {
+                mkdir($carpeta, 0777, true);  // Crear la carpeta con permisos 0777
+            }
+        }
+
+        // Nombre de los archivos PDF
+        $ruta_cv = $cvFolder . "cv_" . $id_persona . ".pdf";
+        $ruta_cedula = $cedulaFolder . "cedula_" . $id_persona . ".pdf";
+        $ruta_estudios = $estudiosFolder . "estudios_" . $id_persona . ".pdf";
+
+        // Mover los archivos PDF temporales a las carpetas finales
+        move_uploaded_file($_FILES["cv"]["tmp_name"], $ruta_cv);
+        move_uploaded_file($_FILES["cedula-pdf"]["tmp_name"], $ruta_cedula);
+        move_uploaded_file($_FILES["estudios"]["tmp_name"], $ruta_estudios);
+
+        // Insertar en la tabla postulante
+        $sqlInsertPostulante = "INSERT INTO postulante (id_persona, cargo_postulante, cv, cedula_escaneada, estudios_postulante) 
+                                VALUES ('$id_persona', '$cargo', '$ruta_cv', '$ruta_cedula', '$ruta_estudios')";
+        $resultInsertPostulante = $conn->query($sqlInsertPostulante);
+
+        if ($resultInsertPostulante === FALSE) {
+            echo "Error al insertar en la tabla postulante: " . $conn->error;
+        } else {
+            echo "Datos guardados con éxito en ambas tablas.";
+        }
     }
 
+    // Cerrar la conexión
     $conn->close();
-    ?>
+}
+?>
 
-    <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
-    <a href="ver_todas_evaluaciones.php" class="menu-button">Ver Todas las Evaluaciones</a>
 </body>
 </html>
