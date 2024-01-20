@@ -4,8 +4,8 @@
 
     <link rel="stylesheet" href="../css/contrato.css">
     <meta charset="UTF-8">
-    <title>Contratar Postulante</title>
     <link rel="stylesheet" href="../css/listaempleados.css">
+    <title>Contratar Postulante</title>
 </head>
 <body>
 
