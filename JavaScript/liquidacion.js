@@ -23,4 +23,3 @@ const diasVacacionesNoTomadas = 10;
 
 const liquidacion = calcularLiquidacion(salarioMensual, antiguedad, diasVacacionesNoTomadas);
 
-console.log("La liquidación total es: $" + liquidacion);
