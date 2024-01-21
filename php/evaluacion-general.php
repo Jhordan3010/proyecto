@@ -1,65 +1,46 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Lista de Empleados</title>
-  <link rel="stylesheet" href="../css/listaempleados.css">
-  <style>
-      table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 20px;
-      }
+    <meta charset="UTF-8">
+    <title>Resultados de Evaluación de Satisfacción</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-      table, th, td {
-          border: 1px solid black;
-      }
+        table, th, td {
+            border: 1px solid black;
+        }
 
-      th, td {
-          padding: 10px;
-          text-align: left;
-      }
-
-      /* Estilo para el botón de ir al menú */
-      .btn-menu {
-          margin-top: 20px;
-          padding: 10px;
-          background-color: #4CAF50;
-          color: white;
-          text-decoration: none;
-          font-size: 16px;
-          cursor: pointer;
-          border: none;
-          border-radius: 5px;
-      }
-  </style>
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Lista de Empleados</h2>
+<h2>Resultados de Evaluación de Satisfacción</h2>
 
 <?php
-// Tu función conectar
-function conectar($dbname)
-{
-    $servername = 'localhost';
-    $username = 'Jhordan';
-    $password = '123456789';
-    $port = 3306;
+// Configuración de la base de datos
+$servername = 'localhost';
+$username = 'Jhordan';
+$password = '123456789';
+$dbname = 'midb_proyecto';
 
-    $conn = new mysqli($servername, $username, $password, $dbname, $port);
+// Crear conexión a la base de datos
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    if ($conn->connect_error) {
-        die("Conexión a base de datos falló: " . $conn->connect_error);
-    }
-
-    return $conn;
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("La conexión a la base de datos falló: " . $conn->connect_error);
 }
 
-// Obtener datos de la tabla empleado uniendo con la tabla persona
-$conn = conectar("midb_proyecto");
-$sql = "SELECT empleado.id_empleado, persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, empleado.cargo_empleado, empleado.sueldo_empleado, empleado.cv, empleado.cedula_escaneada, empleado.titulo FROM empleado
-          INNER JOIN persona ON empleado.id_persona = persona.id_persona";
+// Consulta SQL para obtener los resultados
+$sql = "SELECT * FROM evaluacion_satisfaccion";
 $result = $conn->query($sql);
 
 if ($result === FALSE) {
@@ -69,49 +50,34 @@ if ($result === FALSE) {
     if ($result->num_rows > 0) {
         echo "<table>
                   <tr>
-                    <th>ID Empleado</th>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Cargo Empleado</th>
-                    <th>Sueldo Empleado</th>
-                    <th>Ver CV</th>
-                    <th>Ver Cédula</th>
-                    <th>Ver Titulo</th>
+                    <th>ID</th>
+                    <th>Pregunta 1</th>
+                    <th>Pregunta 2</th>
+                    <th>Pregunta 3</th>
+                    <th>Pregunta 4</th>
+                    <th>Pregunta 5</th>
                   </tr>";
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
-                      <td>{$row['id_empleado']}</td>
-                      <td>{$row['CI']}</td>
-                      <td>{$row['nombre']}</td>
-                      <td>{$row['apellido']}</td>
-                      <td>{$row['direccion']}</td>
-                      <td>{$row['telefono']}</td>
-                      <td>{$row['email']}</td>   
-                      <td>{$row['cargo_empleado']}</td>
-                      <td>{$row['sueldo_empleado']}</td>
-                      <td><a href='{$row['cv']}' target='_blank'>Ver CV</a></td>
-                      <td><a href='{$row['cedula_escaneada']}' target='_blank'>Ver Cédula</a></td>
-                      <td><a href='{$row['titulo']}' target='_blank'>Ver Título</a></td>
+                      <td>{$row['id']}</td>
+                      <td>{$row['pregunta1']}</td>
+                      <td>{$row['pregunta2']}</td>
+                      <td>{$row['pregunta3']}</td>
+                      <td>{$row['pregunta4']}</td>
+                      <td>{$row['pregunta5']}</td>
                     </tr>";
         }
 
         echo "</table>";
     } else {
-        echo "No hay empleados registrados.";
+        echo "No hay resultados de evaluación.";
     }
 }
 
 // Cerrar la conexión
 $conn->close();
 ?>
-
-<!-- Botón para ir al menú -->
-<a href="../html/menu.html" class="btn-menu">Ir al Menú</a>
 
 </body>
 </html>

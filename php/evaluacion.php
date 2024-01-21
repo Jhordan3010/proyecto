@@ -13,38 +13,38 @@
     <main>
         <section>
             <img src="../imagenes/renault.png" alt="">
-            <form  method="post"> <!-- Cambiado action y agregado method -->
+            <form method="post"> <!-- Cambiado action y agregado method -->
 
-                <h3 for="">¿Cómo calificaría su experiencia general en la concesionaria?</h3>     
-                <select name="pregunta1" id="">
+                <h3>¿Cómo calificaría su experiencia general en la concesionaria?</h3>
+                <select name="pregunta1" id="pregunta1">
                     <option value="Excelente">Excelente</option>
                     <option value="Bueno">Bueno</option>
                     <option value="Malo">Malo</option>
                 </select>
 
-                <h3 for="">¿Cómo evaluaría la amabilidad y profesionalismo del personal de ventas?</h3>
-                <select name="pregunta2" id="">
+                <h3>¿Cómo evaluaría la amabilidad y profesionalismo del personal de ventas?</h3>
+                <select name="pregunta2" id="pregunta2">
                     <option value="Excelente">Excelente</option>
                     <option value="Bueno">Bueno</option>
                     <option value="Malo">Malo</option>
                 </select>
 
-                <h3 for="">¿Está satisfecho con la variedad de vehículos disponibles para su elección?</h3>
-                <select name="pregunta3" id="">
+                <h3>¿Está satisfecho con la variedad de vehículos disponibles para su elección?</h3>
+                <select name="pregunta3" id="pregunta3">
                     <option value="Excelente">Excelente</option>
                     <option value="Bueno">Bueno</option>
                     <option value="Malo">Malo</option>
                 </select>
 
-                <h3 for="">¿Cómo calificaría el proceso de financiamiento y la claridad de la información proporcionada?</h3>
-                <select name="pregunta4" id="">
+                <h3>¿Cómo calificaría el proceso de financiamiento y la claridad de la información proporcionada?</h3>
+                <select name="pregunta4" id="pregunta4">
                     <option value="Excelente">Excelente</option>
                     <option value="Bueno">Bueno</option>
                     <option value="Malo">Malo</option>
                 </select>
 
-                <h3 for="">¿Recomendaría nuestra concesionaria a familiares o amigos?</h3>
-                <select name="pregunta5" id="">
+                <h3>¿Recomendaría nuestra concesionaria a familiares o amigos?</h3>
+                <select name="pregunta5" id="pregunta5">
                     <option value="Excelente">Excelente</option>
                     <option value="Bueno">Bueno</option>
                     <option value="Malo">Malo</option>
@@ -56,56 +56,46 @@
         </section>
     </main>
     <?php
-// Configuración de la base de datos
-$servername = 'localhost';
-$username = 'Jhordan';
-$password = '123456789';
-$dbname = 'midb_proyecto';
-$port = 3306;
-
-// Crear conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión a base de datos falló: " . $conn->connect_error);
-}
-
-// Procesar el formulario si se ha enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger los datos del formulario
-    $pregunta1 = mysqli_real_escape_string($conn, $_POST["pregunta1"]);
-    $pregunta2 = mysqli_real_escape_string($conn, $_POST["pregunta2"]);
-    $pregunta3 = mysqli_real_escape_string($conn, $_POST["pregunta3"]);
-    $pregunta4 = mysqli_real_escape_string($conn, $_POST["pregunta4"]);
-    $pregunta5 = mysqli_real_escape_string($conn, $_POST["pregunta5"]);
+    // Configuración de la base de datos
+    $servername = 'localhost';
+    $username = 'Jhordan';
+    $password = '123456789';
+    $dbname = 'midb_proyecto';
+    $port = 3306;
 
-    // Consulta SQL preparada para insertar los datos en la base de datos
-    $sql = $conn->prepare("INSERT INTO evaluacion_general (pregunta1, pregunta2, pregunta3, pregunta4, pregunta5) VALUES (?, ?, ?, ?, ?)");
+    // Crear conexión a la base de datos
+    $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
-    // Vincular parámetros
-    $sql->bind_param("sssss", $pregunta1, $pregunta2, $pregunta3, $pregunta4, $pregunta5);
-
-    // Intentar ejecutar la consulta
-    if ($sql->execute()) {
-        echo "Datos guardados correctamente.";
-    } else {
-        // Mostrar información detallada sobre el error
-        echo "Error al guardar los datos: " . $sql->error;
-        echo "<br>";
-        // Mostrar la consulta SQL para depuración
-        echo "Consulta SQL: " . $sql->queryString;
+    // Verificar la conexión
+    if ($conn->connect_error) {
+        die("Conexión a la base de datos falló: " . $conn->connect_error);
     }
 
-    // Cerrar la consulta
-    $sql->close();
-}
+    // Recoger los datos del formulario
+    $pregunta1 = $_POST['pregunta1'];
+    $pregunta2 = $_POST['pregunta2'];
+    $pregunta3 = $_POST['pregunta3'];
+    $pregunta4 = $_POST['pregunta4'];
+    $pregunta5 = $_POST['pregunta5'];
 
-// Cerrar la conexión
-$conn->close();
+    // Consulta SQL para insertar los datos en la tabla
+    $sql = "INSERT INTO evaluacion_satisfaccion (pregunta1, pregunta2, pregunta3, pregunta4, pregunta5)
+            VALUES ('$pregunta1', '$pregunta2', '$pregunta3', '$pregunta4', '$pregunta5')";
+
+    // Ejecutar la consulta
+    if ($conn->query($sql) === TRUE) {
+        echo "Datos guardados correctamente.";
+    } else {
+        echo "Error al guardar los datos: " . $conn->error;
+    }
+
+    // Cerrar la conexión
+    $conn->close();
+}
 ?>
+
 
 </body>
 </html>
-
-    
+ 
