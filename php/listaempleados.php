@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <title>Lista de Empleados</title>
   <link rel="stylesheet" href="../css/listaempleado.css">
@@ -23,76 +24,94 @@ function conectar($dbname)
     $username = 'Jhordan';
     $password = '123456789';
     $port = 3306;
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    <link rel="stylesheet" href="../css/listaempleados.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Empleados</h1>
+    </header>
 
-    $conn = new mysqli($servername, $username, $password, $dbname, $port);
+    <?php
+    function conectar($dbname)
+    {
+        $servername = 'localhost';
+        $username = 'Jhordan';
+        $password = '123456789';
+        $port = 3306;
 
-    if ($conn->connect_error) {
-        die("Conexión a base de datos falló: " . $conn->connect_error);
+        $conn = new mysqli($servername, $username, $password, $dbname, $port);
+>>>>>>> f84d8043c1ec03246e365296cd7f5d819c27e03a
+
+        if ($conn->connect_error) {
+            die("Conexión a base de datos falló: " . $conn->connect_error);
+        }
+
+        return $conn;
     }
 
-    return $conn;
-}
+    $conn = conectar("midb_Proyecto");
 
-// Obtener datos de la tabla empleado uniendo con la tabla persona
-$conn = conectar("midb_proyecto");
-$sql = "SELECT empleado.id_empleado, persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, empleado.cargo_empleado, empleado.sueldo_empleado, empleado.cv, empleado.cedula_escaneada, empleado.titulo FROM empleado
-          INNER JOIN persona ON empleado.id_persona = persona.id_persona";
-$result = $conn->query($sql);
+    $sql = "SELECT persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, 
+                   empleado.cargo_empleado, empleado.sueldo_empleado
+            FROM persona
+            LEFT JOIN empleado ON persona.id_persona = empleado.id_persona";
 
-if ($result === FALSE) {
-    // Imprimir el error de la consulta SQL
-    echo "Error en la consulta SQL: " . $conn->error;
-} else {
-    if ($result->num_rows > 0) {
-        echo "<table>
-                  <tr>
-                    <th>ID Empleado</th>
-                    <th>Cédula</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Cargo Empleado</th>
-                    <th>Sueldo Empleado</th>
-                    <th>Ver CV</th>
-                    <th>Ver Cédula</th>
-                    <th>Ver Titulo</th>
-                  </tr>";
+    $resultado = $conn->query($sql);
 
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>
-                      <td>{$row['id_empleado']}</td>
-                      <td>{$row['CI']}</td>
-                      <td>{$row['nombre']}</td>
-                      <td>{$row['apellido']}</td>
-                      <td>{$row['direccion']}</td>
-                      <td>{$row['telefono']}</td>
-                      <td>{$row['email']}</td>   
-                      <td>{$row['cargo_empleado']}</td>
-                      <td>{$row['sueldo_empleado']}</td>
-                      <td><a href='{$row['cv']}' target='_blank'>Ver CV</a></td>
-                      <td><a href='{$row['cedula_escaneada']}' target='_blank'>Ver Cédula</a></td>
-                      <td><a href='{$row['titulo']}' target='_blank'>Ver Título</a></td>
-                    </tr>";
+    if (!$resultado) {
+        die("Error en la consulta: " . $conn->error);
+    }
+
+    if ($resultado->num_rows > 0) {
+        echo "<table border='1'>";
+        echo "<tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Cargo Empleado</th>
+                <th>Sueldo Empleado</th>
+                <th>Acciones</th>
+              </tr>";
+
+        while ($fila = $resultado->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $fila['CI'] . "</td>";
+            echo "<td>" . $fila['nombre'] . "</td>";
+            echo "<td>" . $fila['apellido'] . "</td>";
+            echo "<td>" . $fila['direccion'] . "</td>";
+            echo "<td>" . $fila['telefono'] . "</td>";
+            echo "<td>" . $fila['email'] . "</td>";
+            echo "<td>" . $fila['cargo_empleado'] . "</td>";
+            echo "<td>" . $fila['sueldo_empleado'] . "</td>";
+            echo "<td>
+                    <a class='edit-link' href='editar.php?CI=" . $fila['CI'] . "'>Editar</a> 
+                  </td>";
+            echo "</tr>";
         }
 
         echo "</table>";
     } else {
-        echo "No hay empleados registrados.";
+        echo "No se encontraron empleados.";
     }
-}
 
-// Cerrar la conexión
-$conn->close();
-?>
+    $conn->close();
+    ?>
 
-<!-- Botón para ir al menú -->
-<a href="../html/menu.html" class="btn-menu">Ir al Menú</a>
-
+<<<<<<< HEAD
 
         </section>
     </main>
 
+=======
+    <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
+    <!-- <a href="ver_todas_evaluaciones.php" class="menu-button">Ver Todas las Evaluaciones</a> -->
+>>>>>>> f84d8043c1ec03246e365296cd7f5d819c27e03a
 </body>
 </html>
