@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../css/evaluacion-general.css">
     <meta charset="UTF-8">
     <title>Resultados de Evaluación de Satisfacción</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
 
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
 </head>
 <body>
+    <header>
+    <h2>Resultados de Evaluación de Satisfacción</h2>
 
-<h2>Resultados de Evaluación de Satisfacción</h2>
+    </header>
 
+
+<main>
+<section>
 <?php
 // Configuración de la base de datos
 $servername = 'localhost';
@@ -78,6 +69,9 @@ if ($result === FALSE) {
 // Cerrar la conexión
 $conn->close();
 ?>
+</section>
+</main>
+
 
 </body>
 </html>
