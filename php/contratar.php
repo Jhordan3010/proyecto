@@ -10,8 +10,19 @@
         <h1>Contratar Postulante</h1>
 
     </header>
+    <main>
+        
+        <section>
+            <article>
+            <form class="menu" action="" method="post" enctype="multipart/form-data">
+            <label for="cedula">Buscar por Cédula:</label>
+            <input type="text" name="cedula" required>
+            <input class="search" type="submit" value="Buscar">
+            </form>
+            </article>
 
-<?php
+            <article>
+            <?php
 function conectar($dbname)
 {
     $servername = 'localhost';
@@ -121,12 +132,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+            </article>
+            
 
-<form class="menu" action="" method="post" enctype="multipart/form-data">
-    <label for="cedula">Buscar por Cédula:</label>
-    <input type="text" name="cedula" required>
-    <input class="search" type="submit" value="Buscar">
-</form>
+        </section>
+    </main>
+
+
 
 </body>
 </html>

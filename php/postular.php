@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Iniciar Sesión</title>
-  <link rel="stylesheet" href="../css/postular.css">
-  <link rel="stylesheet" href="../JavaScript/LoogginJS.js">
+  <link rel="stylesheet" href="../css/postula.css">
 </head>
 <body>
 
