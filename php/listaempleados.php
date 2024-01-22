@@ -3,42 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Lista de Empleados</title>
-  <link rel="stylesheet" href="../css/listaempleados.css">
-  <style>
-      table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 20px;
-      }
+  <link rel="stylesheet" href="../css/listaempleado.css">
 
-      table, th, td {
-          border: 1px solid black;
-      }
-
-      th, td {
-          padding: 10px;
-          text-align: left;
-      }
-
-      /* Estilo para el botón de ir al menú */
-      .btn-menu {
-          margin-top: 20px;
-          padding: 10px;
-          background-color: #4CAF50;
-          color: white;
-          text-decoration: none;
-          font-size: 16px;
-          cursor: pointer;
-          border: none;
-          border-radius: 5px;
-      }
-  </style>
 </head>
 <body>
+    <header>
+    <h2>Lista de Empleados</h2>
 
-<h2>Lista de Empleados</h2>
+    </header>
 
-<?php
+    <main>
+        <section>
+
+        <?php
 // Tu función conectar
 function conectar($dbname)
 {
@@ -112,6 +89,10 @@ $conn->close();
 
 <!-- Botón para ir al menú -->
 <a href="../html/menu.html" class="btn-menu">Ir al Menú</a>
+
+
+        </section>
+    </main>
 
 </body>
 </html>

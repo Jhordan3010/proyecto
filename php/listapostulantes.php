@@ -4,13 +4,16 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Postulantes</title>
-    <link rel="stylesheet" href="../css/listapostulantes.css">
+    <link rel="stylesheet" href="../css/listapostulante.css">
 </head>
 <body>
+<header>
+    <h1>Lista de Postulantes</h1>
 
-<h2>Lista de Postulantes</h2>
-
-<?php
+</header>
+<main>
+    <section>
+    <?php
 // Tu función conectar
 function conectar($dbname)
 {
@@ -81,6 +84,10 @@ if ($result === FALSE) {
 // Cerrar la conexión
 $conn->close();
 ?>
+    </section>
+
+</main>
+
 
 </body>
 </html>

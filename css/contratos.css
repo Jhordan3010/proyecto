@@ -1,0 +1,143 @@
+
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0%;
+    margin: 0%;
+}
+body{
+    background-image: url("../imagenes/fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+section{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+section form{
+    margin-left: 25%;
+    margin-top: 10px;
+    width: 40%;
+    border: solid black;
+    border-radius: 20px;
+
+}
+.campo-vacio {
+    border: 2px solid red; /* Puedes ajustar el color a tu preferencia */
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.7); /* Fondo semitransparente negro */
+    font-size: 30px;
+    height: 70px;
+    margin: 0%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+    border-bottom: solid black 10px;
+}
+main{
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.formulario{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-bottom: 15px;
+
+}
+form{
+    padding: 10px;
+}
+.menu{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    border-radius: 20px;
+    width: 300px;
+}
+.search{
+    padding: 8px;
+    border-radius: 20px;
+    font-size: 15px;
+    background-color: #e5cc0d;
+
+
+}
+
+
+.datos{
+    font-size: 24px;
+    display: flex;
+    flex-direction:column ;
+    line-height: 1.8;
+    opacity: 100%;
+}
+.campos{
+    margin-left: 70px;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+.campos input{
+    margin-bottom: 15px;
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid black 3px;
+    
+
+}
+#registrar-button{
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    margin-left: calc(50% - 140px);
+    background-color: #e5cc0d;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+select {
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid black 3px;
+}
+
+select option {
+    font-size: 18px; /* Ajusta el tamaño de fuente de las opciones según tus preferencias */
+    background-color: rgba(255, 255, 255, 0.8); /* Ajusta el color de fondo de las opciones según tus preferencias */
+    color: black; /* Ajusta el color del texto de las opciones según tus preferencias */
+    padding: 5px; /* Ajusta el espacio interno de las opciones según tus preferencias */
+}
+/* Agrega estas reglas al final de tu archivo CSS */
+#volver-menu-button {
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    margin-left: calc(50% - 140px);
+    font-size: 30px;
+    margin-top: 20px; /* Ajusta el margen superior según tus preferencias */
+    background-color: #e5cc0d;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+#volver-menu-button:hover {
+    background-color: #e5cc0d;
+}

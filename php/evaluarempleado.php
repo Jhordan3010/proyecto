@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
     <title>Recursos humanos</title>
-    <link rel="stylesheet" href="../css/evalua.css">
+    <link rel="stylesheet" href="../css/evaluar.css">
 </head>
-<body>
+<body>  
     <header>
-        <h1>Evaluar empleado</h1>
+    <h1>Evaluar empleado</h1>
+
     </header>
 
     <main>

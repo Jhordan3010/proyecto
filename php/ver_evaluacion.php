@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado Evaluaciones</title>
-    <link rel="stylesheet" href="../css/listaempleados.css">
+    <link rel="stylesheet" href="../css/listaempleado.css">
 </head>
 <body>
     <header>

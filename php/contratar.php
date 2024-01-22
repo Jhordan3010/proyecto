@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
-    <link rel="stylesheet" href="../css/contrato.css">
+    <link rel="stylesheet" href="../css/contratos.css">
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/listaempleados.css">
     <title>Contratar Postulante</title>
 </head>
 <body>
+    <header>
+        <h1>Contratar Postulante</h1>
 
-<h2>Contratar Postulante</h2>
+    </header>
 
 <?php
 function conectar($dbname)
@@ -122,10 +122,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<form action="" method="post" enctype="multipart/form-data">
+<form class="menu" action="" method="post" enctype="multipart/form-data">
     <label for="cedula">Buscar por Cédula:</label>
     <input type="text" name="cedula" required>
-    <input type="submit" value="Buscar">
+    <input class="search" type="submit" value="Buscar">
 </form>
 
 </body>
