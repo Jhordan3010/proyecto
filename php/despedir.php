@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/desvincular.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/desvincular.css">
     <title>Recursos humanos</title>
     <script src="../JavaScript/liquidacion.js"></script>
 </head>
 <body>
     <header>
-        <h1>Despedir empleado</h1>
+        <h1>Despedir Empleado</h1>
     </header>
 
     <main>
