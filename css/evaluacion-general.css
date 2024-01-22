@@ -1,0 +1,62 @@
+body {
+    background-image: url('../imagenes/fondo.jpg');
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: rgba(10, 10, 10, 0.7); /* Fondo semitransparente negro */
+    height: 70px;
+    color: aliceblue;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid black 8px;
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+
+}
+section{
+    margin-top: 15px;
+    background-color: rgba(220, 220, 220, 0.7);
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+/*DE AQUI PARA ABAJO ES EL CSS QUE ESTABA PUESTO DIRECTAMENTE EN EL HTML*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
