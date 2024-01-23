@@ -1,5 +1,3 @@
-// Crea un nuevo archivo .js (por ejemplo, tu_archivo.js) y agrega el siguiente código:
-
 function calcularLiquidacion() {
     const sueldoMensual = parseFloat(document.getElementById('sueldo-empleado').value);
     const antiguedad = parseInt(document.getElementById('antiguedad').value);
