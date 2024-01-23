@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="../css/listaempleado.css">
 </head>
 <body>
+<header>
+    <h1>Lista de Empleados</h1>
 
-<h2>Lista de Empleados</h2>
+</header>
+<main>
+    <section>
 
-<?php
+    <?php
 // Tu función conectar
 function conectar($dbname)
 {
@@ -85,6 +89,9 @@ $conn->close();
 
 <!-- Botón para ir al menú -->
 <a href="../html/menu.html" class="btn-menu">Ir al Menú</a>
+
+    </section>
+</main>
 
 </body>
 </html>
