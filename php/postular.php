@@ -89,51 +89,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Conexión a la base de datos falló: " . $conn->connect_error);
     }
 
-    // Insertar en la tabla persona
-    $sqlInsertPersona = "INSERT INTO persona (CI, nombre, apellido, direccion, telefono, email) 
-                         VALUES ('$CI', '$nombre', '$apellido', '$direccion', '$telefono', '$correo')";
-    $resultInsertPersona = $conn->query($sqlInsertPersona);
+    // Verificar si la cédula ya existe en la tabla persona
+    $sqlVerificarCedula = "SELECT id_persona FROM persona WHERE CI = '$CI'";
+    $resultVerificarCedula = $conn->query($sqlVerificarCedula);
 
-    if ($resultInsertPersona === FALSE) {
-        echo "Error al insertar en la tabla persona: " . $conn->error;
+    if ($resultVerificarCedula->num_rows > 0) {
+        echo "La cédula ya ha sido registrada.";
     } else {
-        // Obtener el ID de la persona recién insertada
-        $id_persona = $conn->insert_id;
+        // Insertar en la tabla persona
+        $sqlInsertPersona = "INSERT INTO persona (CI, nombre, apellido, direccion, telefono, email) 
+                             VALUES ('$CI', '$nombre', '$apellido', '$direccion', '$telefono', '$correo')";
+        $resultInsertPersona = $conn->query($sqlInsertPersona);
 
-        // Rutas de las carpetas
-        $pdfFolder = "../pdf/";
-        $cvFolder = $pdfFolder . "cv/";
-        $cedulaFolder = $pdfFolder . "cedulas/";
-        $estudiosFolder = $pdfFolder . "estudios_postulante/";
-
-        // Asegurarse de que las carpetas existan
-        $carpetas = [$cvFolder, $cedulaFolder, $estudiosFolder];
-
-        foreach ($carpetas as $carpeta) {
-            if (!is_dir($carpeta)) {
-                mkdir($carpeta, 0777, true);  // Crear la carpeta con permisos 0777
-            }
-        }
-
-        // Nombre de los archivos PDF
-        $ruta_cv = $cvFolder . "cv_" . $id_persona . ".pdf";
-        $ruta_cedula = $cedulaFolder . "cedula_" . $id_persona . ".pdf";
-        $ruta_estudios = $estudiosFolder . "estudios_" . $id_persona . ".pdf";
-
-        // Mover los archivos PDF temporales a las carpetas finales
-        move_uploaded_file($_FILES["cv"]["tmp_name"], $ruta_cv);
-        move_uploaded_file($_FILES["cedula-pdf"]["tmp_name"], $ruta_cedula);
-        move_uploaded_file($_FILES["estudios"]["tmp_name"], $ruta_estudios);
-
-        // Insertar en la tabla postulante
-        $sqlInsertPostulante = "INSERT INTO postulante (id_persona, cargo_postulante, cv, cedula_escaneada, estudios_postulante) 
-                                VALUES ('$id_persona', '$cargo', '$ruta_cv', '$ruta_cedula', '$ruta_estudios')";
-        $resultInsertPostulante = $conn->query($sqlInsertPostulante);
-
-        if ($resultInsertPostulante === FALSE) {
-            echo "Error al insertar en la tabla postulante: " . $conn->error;
+        if ($resultInsertPersona === FALSE) {
+            echo "Error al insertar en la tabla persona: " . $conn->error;
         } else {
-            echo "Datos guardados con éxito en ambas tablas.";
+            // Obtener el ID de la persona recién insertada
+            $id_persona = $conn->insert_id;
+
+            // Rutas de las carpetas
+            $pdfFolder = "../pdf/";
+            $cvFolder = $pdfFolder . "cv/";
+            $cedulaFolder = $pdfFolder . "cedulas/";
+            $estudiosFolder = $pdfFolder . "estudios_postulante/";
+
+            // Asegurarse de que las carpetas existan
+            $carpetas = [$cvFolder, $cedulaFolder, $estudiosFolder];
+
+            foreach ($carpetas as $carpeta) {
+                if (!is_dir($carpeta)) {
+                    mkdir($carpeta, 0777, true);  // Crear la carpeta con permisos 0777
+                }
+            }
+
+            // Nombre de los archivos PDF
+            $ruta_cv = $cvFolder . "cv_" . $id_persona . ".pdf";
+            $ruta_cedula = $cedulaFolder . "cedula_" . $id_persona . ".pdf";
+            $ruta_estudios = $estudiosFolder . "estudios_" . $id_persona . ".pdf";
+
+            // Mover los archivos PDF temporales a las carpetas finales
+            move_uploaded_file($_FILES["cv"]["tmp_name"], $ruta_cv);
+            move_uploaded_file($_FILES["cedula-pdf"]["tmp_name"], $ruta_cedula);
+            move_uploaded_file($_FILES["estudios"]["tmp_name"], $ruta_estudios);
+
+            // Insertar en la tabla postulante
+            $sqlInsertPostulante = "INSERT INTO postulante (id_persona, cargo_postulante, cv, cedula_escaneada, estudios_postulante) 
+                                    VALUES ('$id_persona', '$cargo', '$ruta_cv', '$ruta_cedula', '$ruta_estudios')";
+            $resultInsertPostulante = $conn->query($sqlInsertPostulante);
+
+            if ($resultInsertPostulante === FALSE) {
+                echo "Error al insertar en la tabla postulante: " . $conn->error;
+            } else {
+                echo "Datos guardados con éxito en ambas tablas.";
+            }
         }
     }
 
