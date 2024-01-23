@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Iniciar Sesión</title>
-  <link rel="stylesheet" href="../css/postula.css">
-  <link rel="stylesheet" href="../JavaScript/LoogginJS.js">
+  <link rel="stylesheet" href="../css/postular.css">
+  
 </head>
 <body>
 
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resultVerificarCedula = $conn->query($sqlVerificarCedula);
 
     if ($resultVerificarCedula->num_rows > 0) {
-        echo "La cédula ya ha sido registrada.";
+        echo '<p class="mensaje">La cédula ya ha sido registrada.</p>';
     } else {
         // Insertar en la tabla persona
         $sqlInsertPersona = "INSERT INTO persona (CI, nombre, apellido, direccion, telefono, email) 
@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resultInsertPersona = $conn->query($sqlInsertPersona);
 
         if ($resultInsertPersona === FALSE) {
-            echo "Error al insertar en la tabla persona: " . $conn->error;
+            echo '<p class="mensaje">Error al insertar en la tabla persona: </p>' . $conn->error;
         } else {
             // Obtener el ID de la persona recién insertada
             $id_persona = $conn->insert_id;
@@ -138,9 +138,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $resultInsertPostulante = $conn->query($sqlInsertPostulante);
 
             if ($resultInsertPostulante === FALSE) {
-                echo "Error al insertar en la tabla postulante: " . $conn->error;
+                echo '<p class="mensaje">Error al insertar en la tabla postulante: </p>' . $conn->error;
             } else {
-                echo "Datos guardados con éxito en ambas tablas.";
+                echo '<p class="mensaje">Datos guardados con éxito en ambas tablas.</p>';
             }
         }
     }

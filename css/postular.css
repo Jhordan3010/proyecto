@@ -24,7 +24,8 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 100px);
+
 }
 #login-form{
     width: 100%;
@@ -32,6 +33,12 @@ main{
 img{
     height: 90px;
     border-radius: 20px;
+}
+.mensaje{
+    color: white;
+    text-align: center;
+    height: 22px;
+    font-size: 22px;
 }
 section{
     width: 40%;

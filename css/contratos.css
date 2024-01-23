@@ -42,7 +42,9 @@ section{
     padding: 15px;
 
 }
-
+article{
+    margin-bottom: 50px;
+}
 .search{
     width: 100px;
     height: 25px;

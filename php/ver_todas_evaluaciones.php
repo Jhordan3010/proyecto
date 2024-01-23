@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Todas las Evaluaciones</title>
-    <link rel="stylesheet" href="../css/ver_todas_evaluaciones.css">
+    <link rel="stylesheet" href="../css/ver_todas_evaluacione.css">
 </head>
 <body>
     <header>
@@ -47,17 +47,17 @@
                                evaluacion.reg_date
                         FROM persona
                         INNER JOIN empleado ON persona.id_persona = empleado.id_persona
-                        LEFT JOIN evaluar_empleado evaluacion ON empleado.id_empleado = evaluacion.id_empleado
+                        INNER JOIN evaluar_empleado evaluacion ON empleado.id_empleado = evaluacion.id_empleado
                         WHERE persona.CI = '$cedula'";
             } else {
-                // Si no hay solicitud de búsqueda, obtener todas las evaluaciones
+                // Si no hay solicitud de búsqueda, obtener todas las evaluaciones realizadas
                 $sql = "SELECT persona.CI, persona.nombre, persona.apellido, 
                                empleado.cargo_empleado, 
                                evaluacion.desempeno, evaluacion.comportamiento, evaluacion.adaptabilidad,
                                evaluacion.reg_date
                         FROM persona
                         INNER JOIN empleado ON persona.id_persona = empleado.id_persona
-                        LEFT JOIN evaluar_empleado evaluacion ON empleado.id_empleado = evaluacion.id_empleado";
+                        INNER JOIN evaluar_empleado evaluacion ON empleado.id_empleado = evaluacion.id_empleado";
             }
 
             $resultado = $conn->query($sql);
@@ -100,9 +100,9 @@
             $conn->close();
             ?>
 
-            <a href="ver_todas_evaluaciones.php" class="menu-button">Atras</a>
             <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
         </section>
     </main>
 </body>
 </html>
+
