@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Empleados</title>
-    <link rel="stylesheet" href="../css/listaempleados.css">
+    <link rel="stylesheet" href="../css/listaempleado.css">
 </head>
 <body>
     <header>
         <h1>Lista de Empleados</h1>
     </header>
 
-    <?php
+    <main>
+        <section>
+        <?php
     function conectar($dbname)
     {
         $servername = 'localhost';
@@ -80,5 +82,10 @@
     ?>
 
     <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
+
+        </section>
+    </main>
+
+   
 </body>
 </html>

@@ -10,32 +10,11 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-section{
-
-    align-items: center;
-    
-    height: 80%;
-    width: 50%;
-    background-color: rgb(255, 255,255,0.7);
-    border-radius: 20px;
-    padding: 15px;
-
-}
-article{
-    border: solid black 2px;
-    padding: 8px;
-    border-radius: 20px;
-
-}
-.campo-vacio {
-    border: 2px solid red; /* Puedes ajustar el color a tu preferencia */
-}
 
 header {
     background-color: rgba(51, 51, 51, 0.7); /* Fondo semitransparente negro */
     font-size: 30px;
     height: 70px;
-    margin: 0%;
     color: white;
     display: flex;
     align-items: center;
@@ -52,66 +31,24 @@ main{
     flex-direction: column;
 }
 
-.formulario{
-    display: flex;
-    
+section{
+
     align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    margin: 0 auto;
-    border-radius: 20px;
     
-
-}
-
-.menu{
-    background-color: rgba(255, 255, 255, 0.8);
+    height: 80%;
+    width: 50%;
+    background-color: rgb(255, 255,255,0.7);
+    border-radius: 20px;
     padding: 15px;
-    border-radius: 20px;
-    width: 300px;
+
 }
+
 .search{
-    padding: 8px;
+    width: 100px;
+    height: 25px;
     border-radius: 20px;
-    font-size: 15px;
     background-color: #e5cc0d;
-}
-
-form{
-    
-    height: 300px;
-}
-.datos{
-    font-size: 24px;
-    display: flex;
-    flex-direction:column ;
-    line-height: 1.8;
-    opacity: 100%;
-}
-.campos{
-    margin-left: 70px;
-
-    display: flex;
-    flex-direction: column;
-    
-}
-.campos input{
-    margin-bottom: 15px;
-    font-size: 22px;
-    background-color: transparent;
-    border: none;
-    border-bottom: solid black 3px;
-    
-
-}
-#registrar-button{
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    margin-left: calc(50% - 140px);
-    background-color: #e5cc0d;
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 select {
@@ -127,6 +64,10 @@ select option {
     color: black; /* Ajusta el color del texto de las opciones según tus preferencias */
     padding: 5px; /* Ajusta el espacio interno de las opciones según tus preferencias */
 }
+
+
+
+
 /* Agrega estas reglas al final de tu archivo CSS */
 #volver-menu-button {
     width: 300px;
