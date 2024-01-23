@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <meta charset="UTF-8">
-  <title>Lista de Empleados</title>
-  <link rel="stylesheet" href="../css/listaempleado.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Empleados</title>
+    <link rel="stylesheet" href="../css/listaempleados.css">
 </head>
 <body>
     <header>
-    <h2>Lista de Empleados</h2>
-
+        <h1>Lista de Empleados</h1>
     </header>
-
-    <main>
-        <section>
-
-       
-
 
     <?php
     function conectar($dbname)
@@ -28,7 +20,6 @@
         $port = 3306;
 
         $conn = new mysqli($servername, $username, $password, $dbname, $port);
-
 
         if ($conn->connect_error) {
             die("Conexión a base de datos falló: " . $conn->connect_error);
@@ -42,7 +33,7 @@
     $sql = "SELECT persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, 
                    empleado.cargo_empleado, empleado.sueldo_empleado
             FROM persona
-            LEFT JOIN empleado ON persona.id_persona = empleado.id_persona";
+            INNER JOIN empleado ON persona.id_persona = empleado.id_persona";
 
     $resultado = $conn->query($sql);
 
@@ -82,19 +73,12 @@
 
         echo "</table>";
     } else {
-        echo "No se encontraron empleados.";
+        echo "No se encontraron empleados contratados.";
     }
 
     $conn->close();
-?>
-
-
-
-        </section>
-    </main>
+    ?>
 
     <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
-    <!-- <a href="ver_todas_evaluaciones.php" class="menu-button">Ver Todas las Evaluaciones</a> -->
-
 </body>
 </html>

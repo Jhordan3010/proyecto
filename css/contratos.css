@@ -11,16 +11,19 @@ body{
     background-size: cover;
 }
 section{
-    display: flex;
-    justify-content: center;
+
     align-items: center;
-    flex-direction: column;
+    
+    height: 80%;
+    width: 50%;
+    background-color: rgb(255, 255,255,0.7);
+    border-radius: 20px;
+    padding: 15px;
+
 }
-section form{
-    margin-left: 25%;
-    margin-top: 10px;
-    width: 40%;
-    border: solid black;
+article{
+    border: solid black 2px;
+    padding: 8px;
     border-radius: 20px;
 
 }
@@ -42,7 +45,7 @@ header {
     border-bottom: solid black 10px;
 }
 main{
-    height: calc(100vh - 120px);
+    height: calc(100vh - 70px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,18 +54,16 @@ main{
 
 .formulario{
     display: flex;
-    padding: 20px;
+    
     align-items: center;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.8);
     margin: 0 auto;
     border-radius: 20px;
-    margin-bottom: 15px;
+    
 
 }
-form{
-    padding: 10px;
-}
+
 .menu{
     background-color: rgba(255, 255, 255, 0.8);
     padding: 15px;
@@ -74,11 +75,12 @@ form{
     border-radius: 20px;
     font-size: 15px;
     background-color: #e5cc0d;
-
-
 }
 
-
+form{
+    
+    height: 300px;
+}
 .datos{
     font-size: 24px;
     display: flex;

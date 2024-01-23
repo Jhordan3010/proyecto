@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Iniciar Sesión</title>
   <link rel="stylesheet" href="../css/postula.css">
+  <link rel="stylesheet" href="../JavaScript/LoogginJS.js">
 </head>
 <body>
 
