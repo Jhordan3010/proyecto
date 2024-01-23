@@ -58,6 +58,45 @@
         </section>
 
     </main>
+
+    <?php
+// Configuración de la conexión a la base de datos
+$servername = "tu_servidor";
+$username = "tu_usuario";
+$password = "tu_contraseña";
+$dbname = "tu_base_de_datos";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+// Procesar el formulario si se ha enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recuperar datos del formulario
+    $experiencia = $_POST["experiencia"];
+    $habilidades = $_POST["habilidades"];
+    $idiomas = $_POST["idiomas"];
+    $disponibilidad = $_POST["disponibilidad"];
+
+    // Preparar la consulta SQL para insertar datos en la tabla
+    $sql = "INSERT INTO entrevista_recepcionista (experiencia, habilidades, idiomas, disponibilidad) VALUES ('$experiencia', '$habilidades', '$idiomas', '$disponibilidad')";
+
+    // Ejecutar la consulta y verificar si fue exitosa
+    if ($conn->query($sql) === TRUE) {
+        echo "Registro insertado correctamente.";
+    } else {
+        echo "Error al insertar el registro: " . $conn->error;
+    }
+}
+
+// Cerrar la conexión a la base de datos
+$conn->close();
+?>
+
 </body>
 
 </html>

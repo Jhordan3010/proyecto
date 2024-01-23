@@ -15,17 +15,18 @@
     <main>
         <section>
             <img src="../imagenes/renault.png" alt="">
-
-            <form class="preguntas" action="">
+            
+            <form class="preguntas" action="" method="POST">
+                <label for="cedula_postulante">Cédula del postulante:</label>
+                <input type="text" id="cedula_postulante" name="cedula_postulante" required>
                 <label>1. ¿Cuántos años de experiencia tiene en roles de ventas?</label>
-                <select name="experiencia" >
+                <select name="experiencia">
                     <option value="" disabled selected>Seleccione una opción</option>
                     <option value="Menos de 2 años">Menos de 2 años</option>
                     <option value="2-5 años">2-5 años</option>
                     <option value="5-10 años">5-10 años</option>
                     <option value="Más de 10 años">Más de 10 años</option>
                 </select>
-
                 <label>2. ¿Cuál de las siguientes estrategias considera más efectiva para aumentar lasventas?</label> 
                 <select name="estrategia" >
                     <option value="" disabled selected>Seleccione una opción</option>
@@ -62,14 +63,48 @@
                     <option value="Implementación de sistemas de reconocimiento">Implementación de sistemas de reconocimiento</option>
                 </select>
 
-
-
                 <button type="submit">Enviar</button>
             </form>
 
         </section>
 
     </main>
+    <?php
+$servername = 'localhost';
+$username = 'Jhordan';
+$password = '123456789';
+$dbname = 'midb_proyecto';
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $cedula_postulante = $_POST["cedula_postulante"];
+    $experiencia = $_POST["experiencia"];
+    $estrategia = $_POST["estrategia"];
+    $motivacion = $_POST["motivacion"];
+    $objeciones = $_POST["objeciones"];
+    $seguimiento = $_POST["seguimiento"];
+
+    $sql_entrevista_ventas = "INSERT INTO entrevista_ventas (experiencia, estrategia, motivacion, objeciones, seguimiento, CI)
+                               VALUES ('$experiencia', '$estrategia', '$motivacion', '$objeciones', '$seguimiento', '$cedula_postulante')";
+
+    if ($conn->query($sql_entrevista_ventas) === TRUE) {
+        echo "<p>Entrevista registrada correctamente.</p>";
+    } else {
+        echo "<p>Error al registrar la entrevista: " . $conn->error . "</p>";
+    }
+}
+
+$conn->close();
+?>
+
+
 </body>
 
 </html>
+
+
