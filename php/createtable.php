@@ -15,15 +15,14 @@
         }
 
     // SQL para crear tabla 
-    $sql1 = "CREATE TABLE Persona (
-        CI VARCHAR(30) NOT NULL PRIMARY KEY,
-        nombre VARCHAR(30) NOT NULL,
-        apellido VARCHAR(50) NOT NULL,
-        direccion VARCHAR(25) NOT NULL,
-        telefono VARCHAR(10) NOT NULL,
-        email VARCHAR(10) ,
-        reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        )";
+    CREATE TABLE evaluar_empleado (
+        id_evaluacion INT AUTO_INCREMENT PRIMARY KEY,
+        id_empleado INT,
+        desempeno ENUM('Malo', 'Bueno', 'Excelente'),
+        comportamiento ENUM('Malo', 'Bueno', 'Excelente'),
+        adaptabilidad ENUM('Malo', 'Bueno', 'Excelente'),
+        FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado)
+    );
     
     if ($conn->query($sql1) === TRUE) {
         echo "Tabla Usuarios creada satisfactoriamente";

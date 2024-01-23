@@ -8,8 +8,7 @@
 </head>
 <body>  
     <header>
-    <h1>Evaluar empleado</h1>
-
+        <h1>Evaluar empleado</h1>
     </header>
 
     <main>
