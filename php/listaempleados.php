@@ -1,30 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-  <meta charset="UTF-8">
-  <title>Lista de Empleados</title>
-  <link rel="stylesheet" href="../css/listaempleado.css">
-
-</head>
-<body>
-    <header>
-    <h2>Lista de Empleados</h2>
-
-    </header>
-
-    <main>
-        <section>
-
-        <?php
-// Tu función conectar
-function conectar($dbname)
-{
-    $servername = 'localhost';
-    $username = 'Jhordan';
-    $password = '123456789';
-    $port = 3306;
-=======
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Empleados</title>
@@ -44,7 +20,6 @@ function conectar($dbname)
         $port = 3306;
 
         $conn = new mysqli($servername, $username, $password, $dbname, $port);
->>>>>>> f84d8043c1ec03246e365296cd7f5d819c27e03a
 
         if ($conn->connect_error) {
             die("Conexión a base de datos falló: " . $conn->connect_error);
@@ -58,7 +33,7 @@ function conectar($dbname)
     $sql = "SELECT persona.CI, persona.nombre, persona.apellido, persona.direccion, persona.telefono, persona.email, 
                    empleado.cargo_empleado, empleado.sueldo_empleado
             FROM persona
-            LEFT JOIN empleado ON persona.id_persona = empleado.id_persona";
+            INNER JOIN empleado ON persona.id_persona = empleado.id_persona";
 
     $resultado = $conn->query($sql);
 
@@ -98,20 +73,12 @@ function conectar($dbname)
 
         echo "</table>";
     } else {
-        echo "No se encontraron empleados.";
+        echo "No se encontraron empleados contratados.";
     }
 
     $conn->close();
     ?>
 
-<<<<<<< HEAD
-
-        </section>
-    </main>
-
-=======
     <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
-    <!-- <a href="ver_todas_evaluaciones.php" class="menu-button">Ver Todas las Evaluaciones</a> -->
->>>>>>> f84d8043c1ec03246e365296cd7f5d819c27e03a
 </body>
 </html>

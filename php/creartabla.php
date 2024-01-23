@@ -13,10 +13,10 @@ if ($conn->connect_error) {
 }
 
 // Sentencia SQL para crear la tabla
-$sql = "CREATE TABLE evaluacion_satisfaccion (
+$sql = "CREATE TABLE evaluacion_general (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    pregunta1 VARCHAR(255),
-    pregunta2 VARCHAR(255),
+    Desempeño VARCHAR(255),
+    comportamiento  VARCHAR(255),
     pregunta3 VARCHAR(255),
     pregunta4 VARCHAR(255),
     pregunta5 VARCHAR(255)

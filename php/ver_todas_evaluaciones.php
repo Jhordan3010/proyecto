@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Todas las Evaluaciones</title>
-    <link rel="stylesheet" href="../css/ver_todas_evaluaciones.css">
+    <link rel="stylesheet" href="../css/ver_todas_evaluacione.css">
 </head>
 <body>
     <header>
         <h1>Ver Todas las Evaluaciones</h1>
     </header>
-
-    <form action="ver_todas_evaluaciones.php" method="post">
+    <main>
+        <section>
+        <form action="ver_todas_evaluaciones.php" method="post">
         <label for="cedula">Buscar por Cédula:</label>
         <input type="text" id="cedula" name="cedula" required>
         <button type="submit" class="menu-button">Buscar</button>
@@ -101,5 +102,8 @@
 
     <a href="ver_todas_evaluaciones.php" class="menu-button">Atras</a>
     <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
+        </section>
+    </main>
+    
 </body>
 </html>
