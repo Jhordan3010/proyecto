@@ -27,14 +27,14 @@
                     <option value="5-10 años">5-10 años</option>
                     <option value="Más de 10 años">Más de 10 años</option>
                 </select>
-                <label>2. ¿Cuál de las siguientes estrategias considera más efectiva para aumentar lasventas?</label> 
+                <label>2. ¿Cuál de las siguientes estrategias considera más efectiva para aumentar las ventas?</label> 
                 <select name="estrategia" >
                     <option value="" disabled selected>Seleccione una opción</option>
 
-                    <option value="Desarrollo de relaciones con clientes existentes">Desarrollo de relaciones conclientes existentes</option>
+                    <option value="Desarrollo de relaciones con clientes existentes">Desarrollo de relaciones con clientes existentes</option>
                     <option value="Prospección activa de nuevos clientes">Prospección activa de nuevos clientes</option>
                     <option value="Utilización de tecnologías de venta en línea">Utilización de tecnologías de venta en línea</option>
-                    <option value="Personalización de ofertas según el perfil del cliente">Personalización de ofertassegún el perfil del cliente</option>
+                    <option value="Personalización de ofertas según el perfil del cliente">Personalización de ofertas según el perfil del cliente</option>
                 </select>
 
                 <label for="motivacion">3. Cuando se trata de motivar a un equipo de ventas, ¿cuál de las siguientes acciones considera más impactante?</label>
