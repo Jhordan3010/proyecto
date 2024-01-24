@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
-    <title>Recursos humanos</title>
+    <title>Evaluar Empleado</title>
     <link rel="stylesheet" href="../css/evaluar.css">
 </head>
 <body>  
     <header>
-        <h1>Evaluar empleado</h1>
+        <h1>Evaluar Empleado</h1>
     </header>
 
     <main>
