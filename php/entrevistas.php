@@ -15,9 +15,9 @@
     <main>
         <section class="botones-menu">
             <a href="../php/entrevista-gerente-general.php"><button><b>Entrevista Gerente General</b></button></a>
-            <a href="../php/entrevista-gerenteV.php"><button><b>Gerente de Ventas</b></button></a>
-            <a href="../php/entrevista-mecanico.html"><button><b>Entrevista Mecanico</b></button></a>
-            <a href="../php/entrevista-recepcionista.php"><button ><b>Contratar</b></button></a>
+            <a href="../php/entrevista-gerenteV.php"><button><b>Entrevista Gerente de Ventas</b></button></a>
+            <a href="../php/entrevista-mecanico.php"><button><b>Entrevista Mecanico</b></button></a>
+            <a href="../php/entrevista-recepcionista.php"><button ><b>Entrevista Recepcionista</b></button></a>
             <a href="../html/menu.html"><button><b>Regresar</b></button></a>
         </section>
 

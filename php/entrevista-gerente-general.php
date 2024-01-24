@@ -17,7 +17,8 @@
             <img src="../imagenes/renault.png" alt="">
 
             <form class="preguntas" action="">
-
+                <label for="cedula_postulante">Cédula del postulante:</label>
+                <input type="text" id="cedula_postulante" name="cedula_postulante" required>
                 <label for="accion_importante">¿Cuál de las siguientes acciones considera más importante para el éxito
                     de la concesionaria?</label>
                 <select id="accion_importante" name="accion_importante" required>
@@ -76,10 +77,10 @@
 
     </main>
     <?php
- $servername = 'localhost';
- $username = 'Jhordan';
- $password = '123456789';
- $dbname = 'midb_proyecto';
+$servername = 'localhost';
+$username = 'Jhordan';
+$password = '123456789';
+$dbname = 'midb_proyecto';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -88,37 +89,25 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cedula_postulante = $_POST["cedula_postulante"];
+    $ci_postulante = $_POST["cedula_postulante"];
     $accion_importante = $_POST["accion_importante"];
     $liderazgo = $_POST["liderazgo"];
     $metas = $_POST["metas"];
     $clientes = $_POST["clientes"];
 
-    // Obtener el id_postulante para relacionar con la entrevista
-    $query_id_postulante = "SELECT id_postulante FROM postulante WHERE ci_postulante = '$cedula_postulante'";
-    $result_id_postulante = $conn->query($query_id_postulante);
+    // Guardar la entrevista en la tabla entrevista_gerente_general
+    $sql_entrevista_general = "INSERT INTO entrevista_gerente_general (CI, accion_importante, liderazgo, metas, clientes)
+                               VALUES ('$ci_postulante', '$accion_importante', '$liderazgo', '$metas', '$clientes')";
 
-    if ($result_id_postulante->num_rows > 0) {
-        $row_id_postulante = $result_id_postulante->fetch_assoc();
-        $id_postulante = $row_id_postulante["id_postulante"];
-
-        // Guardar la entrevista en la tabla entrevista
-        $sql_entrevista = "INSERT INTO entrevista (accion_importante, liderazgo, metas, clientes, id_postulante)
-                           VALUES ('$accion_importante', '$liderazgo', '$metas', '$clientes', '$id_postulante')";
-        
-        if ($conn->query($sql_entrevista) === TRUE) {
-            echo "<p>Entrevista registrada correctamente.</p>";
-        } else {
-            echo "<p>Error al registrar la entrevista: " . $conn->error . "</p>";
-        }
+    if ($conn->query($sql_entrevista_general) === TRUE) {
+        echo "<p>Entrevista registrada correctamente.</p>";
     } else {
-        echo "<p>No se encontró el id_postulante para la cédula $cedula_postulante.</p>";
+        echo "<p>Error al registrar la entrevista: " . $conn->error . "</p>";
     }
 }
 
 $conn->close();
 ?>
-
 </body>
 
 </html>

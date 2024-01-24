@@ -17,6 +17,8 @@
             <img src="../imagenes/renault.png" alt="">
 
             <form class="preguntas" action="">
+                <label for="cedula_postulante">Cédula del postulante:</label>
+                <input type="text" id="cedula_postulante" name="cedula_postulante" required>
                 <label for="experiencia">¿Cuánta experiencia tiene en roles de recepción?</label>
                 <select id="experiencia" name="experiencia" required>
                     <option value="" disabled selected>Seleccione una opción</option>
@@ -58,44 +60,40 @@
         </section>
 
     </main>
-
     <?php
-// Configuración de la conexión a la base de datos
-$servername = "tu_servidor";
-$username = "tu_usuario";
-$password = "tu_contraseña";
-$dbname = "tu_base_de_datos";
+$servername = 'localhost';
+$username = 'Jhordan';
+$password = '123456789';
+$dbname = 'midb_proyecto';
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar la conexión
 if ($conn->connect_error) {
     die("Error de conexión a la base de datos: " . $conn->connect_error);
 }
 
-// Procesar el formulario si se ha enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recuperar datos del formulario
+    $cedula_postulante = $_POST["cedula_postulante"];
     $experiencia = $_POST["experiencia"];
     $habilidades = $_POST["habilidades"];
     $idiomas = $_POST["idiomas"];
     $disponibilidad = $_POST["disponibilidad"];
 
-    // Preparar la consulta SQL para insertar datos en la tabla
-    $sql = "INSERT INTO entrevista_recepcionista (experiencia, habilidades, idiomas, disponibilidad) VALUES ('$experiencia', '$habilidades', '$idiomas', '$disponibilidad')";
+    // Guardar la entrevista en la tabla entrevista_recepcionista
+    $sql_entrevista_recepcionista = "INSERT INTO entrevista_recepcionista (CI, experiencia, habilidades, idiomas, disponibilidad)
+                           VALUES ('$cedula_postulante', '$experiencia', '$habilidades', '$idiomas', '$disponibilidad')";
 
-    // Ejecutar la consulta y verificar si fue exitosa
-    if ($conn->query($sql) === TRUE) {
-        echo "Registro insertado correctamente.";
+    if ($conn->query($sql_entrevista_recepcionista) === TRUE) {
+        echo "<p>Entrevista registrada correctamente.</p>";
     } else {
-        echo "Error al insertar el registro: " . $conn->error;
+        echo "<p>Error al registrar la entrevista: " . $conn->error . "</p>";
     }
 }
 
-// Cerrar la conexión a la base de datos
 $conn->close();
 ?>
+
+ 
 
 </body>
 

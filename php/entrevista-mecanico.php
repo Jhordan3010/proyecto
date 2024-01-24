@@ -16,7 +16,8 @@
         <section>
             <img src="../imagenes/renault.png" alt="">
             <form class="preguntas" action="">
-
+               <label for="cedula_postulante">Cédula del postulante:</label>
+                <input type="text" id="cedula_postulante" name="cedula_postulante" required>
                 <label for="experiencia">¿Cuántos años de experiencia tiene como Técnico de Servicios Mecánicos?</label>
                 <select id="experiencia" name="experiencia" required>
                     <option value="" disabled selected>Seleccione una opción</option>
@@ -70,6 +71,39 @@
         </section>
 
     </main>
+    <?php
+$servername = 'localhost';
+$username = 'Jhordan';
+$password = '123456789';
+$dbname = 'midb_proyecto';
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Error de conexión a la base de datos: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $cedula_postulante = $_POST["cedula_postulante"];
+    $experiencia = $_POST["experiencia"];
+    $certificacion = $_POST["certificacion"];
+    $actualizacion_tecnologica = $_POST["actualizacion_tecnologica"];
+    $seguridad_trabajo = $_POST["seguridad_trabajo"];
+
+    // Guardar la entrevista en la tabla entrevista_mecanico
+    $sql_entrevista_mecanico = "INSERT INTO entrevista_mecanico (cedula_postulante, experiencia, certificacion, actualizacion_tecnologica, seguridad_trabajo)
+                           VALUES ('$cedula_postulante', '$experiencia', '$certificacion', '$actualizacion_tecnologica', '$seguridad_trabajo')";
+
+    if ($conn->query($sql_entrevista_mecanico) === TRUE) {
+        echo "<p>Entrevista registrada correctamente.</p>";
+    } else {
+        echo "<p>Error al registrar la entrevista: " . $conn->error . "</p>";
+    }
+}
+
+$conn->close();
+?>
+
 </body>
 
 </html>

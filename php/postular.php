@@ -12,6 +12,7 @@
     <h1>Concesionario</h1>
   </header>
   <main>
+    
     <section>
       <img src="../imagenes/renault.png" alt="">
       <h2>Postular</h2>
@@ -38,12 +39,14 @@
 
       <article class="input-group">
         <label for="cargo_postulante">Cargo a Postular</label>
-        <select class="lista" name="cargo_postulante" id="" required>
-            <option value="Gerente de ventas">Gerente de ventas</option>
-            <option value="Recepcionista">Recepcionista</option>
-            <option value="Gerente General">Gerente General</option>
-            <option value="Técnico de servicio mecánico">Técnico de servicio mecánico</option>
-        </select>
+        <select id="cargo" name="cargo">
+                    <option value="" disabled selected>Seleccione un cargo</option>
+                    <option value="Gerente de Ventas">Gerente de Ventas</option>
+                    <option value="Gerente General">Gerente General</option>
+                    <option value="Mecánico">Mecánico</option>
+                    <option value="Recepcionista">Recepcionista</option>
+                    <!-- Agrega más opciones según tus cargos -->
+                </select>
       </article>
 
       <article class="documentos">
@@ -61,7 +64,37 @@
       <button type="submit">Enviar</button>
 
     </form>
+    
+
     <p id="error-message" class="error-message"></p>
+  </section>
+  <section>
+  <form id="requisitos">
+        <pre>
+             <b>GERENTE DE VENTAS</b>
+        • Principales responsabilidades: 
+        -Desarrollo de estrategias de ventas 
+        -Establecimiento de metas y objetivos 
+        •	Requisitos: 
+        -Título en Administración de Empresas o carreras afines
+        -Elevado nivel de relaciones interpersonales 
+        -Manejar situaciones imprevistas y resolver problemas de manera eficiente
+        -Habilidades de liderazgo
+        </pre>
+        <pre>
+          <b>GERENTE GENERAL</b> 
+        •	Principales responsabilidades: 
+        -Planificación estratégica 
+        -Desarrollo de negocios 
+        -Desarrollo de políticas y procedimientos
+        •	Requisitos: 
+        -Título en Administración de Empresas, Gerencia de Empresas o carreras afines
+        -Habilidades de comunicación 
+        -Capacidad analítica
+        -Innovación y Adaptación 
+        -Habilidades de liderazgo
+        </pre>
+    </form>
   </section>
 
 </main>

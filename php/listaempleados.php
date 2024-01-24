@@ -13,7 +13,14 @@
     <section>
         <form method="GET">
             <label for="cargo">Buscar por Cargo:</label>
-            <input type="text" id="cargo" name="cargo" placeholder="Ingrese el cargo">
+            <select id="cargo" name="cargo">
+                <option value="" disabled selected>Seleccione un cargo</option>
+                <option value="Gerente de Ventas">Gerente de Ventas</option>
+                <option value="Gerente General">Gerente General</option>
+                <option value="Mecánico">Mecánico</option>
+                <option value="Recepcionista">Recepcionista</option>
+                <!-- Agrega más opciones según tus cargos -->
+            </select>
             <input type="submit" value="Buscar">
         </form>
 
@@ -98,9 +105,8 @@
         ?>
 
         <!-- Botón para ir al menú -->
-        <a href="../html/menu.html" class="btn-menu">Ir al Menú</a>
+        <!-- <a href="../html/menu.html" class="btn-menu">Ir al Menú</a> -->
     </section>
 </main>
 </body>
 </html>
-
