@@ -73,26 +73,49 @@
         <pre>
              <b>GERENTE DE VENTAS</b>
         • Principales responsabilidades: 
-        -Desarrollo de estrategias de ventas 
-        -Establecimiento de metas y objetivos 
+        - Desarrollo de estrategias de ventas 
+        - Establecimiento de metas y objetivos 
         •	Requisitos: 
-        -Título en Administración de Empresas o carreras afines
-        -Elevado nivel de relaciones interpersonales 
-        -Manejar situaciones imprevistas y resolver problemas de manera eficiente
-        -Habilidades de liderazgo
+        - Título en Administración de Empresas o carreras afines
+        - Elevado nivel de relaciones interpersonales 
+        - Manejar situaciones imprevistas y resolver problemas de manera eficiente
+        - Habilidades de liderazgo
         </pre>
         <pre>
           <b>GERENTE GENERAL</b> 
         •	Principales responsabilidades: 
-        -Planificación estratégica 
-        -Desarrollo de negocios 
-        -Desarrollo de políticas y procedimientos
+        - Planificación estratégica 
+        - Desarrollo de negocios 
+        - Desarrollo de políticas y procedimientos
         •	Requisitos: 
-        -Título en Administración de Empresas, Gerencia de Empresas o carreras afines
-        -Habilidades de comunicación 
-        -Capacidad analítica
-        -Innovación y Adaptación 
-        -Habilidades de liderazgo
+        - Título en Administración de Empresas, Gerencia de Empresas o carreras afines
+        - Habilidades de comunicación 
+        - Capacidad analítica
+        - Innovación y Adaptación 
+        - Habilidades de liderazgo
+        </pre>
+        <pre>
+          <b>MECANICO</b>
+        • Principales responsabilidades:
+        - Diagnosticar y reparar problemas eléctricos y electrónicos en vehículos 
+        - Trabajar en sistemas mecánicos, como motores, transmisiones y sistemas de suspensión
+        - Mantener actualizado con las últimas tecnologías automotrices y participar en la formación continua
+        •	Requisitos: 
+        - Formación técnica en mecánica automotriz, preferiblemente con certificaciones o cursos adicionales.
+        - Amplios conocimientos en sistemas mecánicos, eléctricos y electrónicos de vehículos.
+        - Capacidad para trabajar de manera colaborativa con otros mecánicos, asesores de servicio y personal de la concesionaria.
+        </pre>
+        <pre>
+          <b>RECEPCIONISTA</b>
+        •	Principales responsabilidades: 
+        - Proporcionar información básica sobre los servicios y productos de la concesionaria.
+        - Programar y gestionar citas para servicios de mantenimiento, reparación y ventas.
+        - Contestar llamadas telefónicas y dirigirlas a la persona o departamento adecuado.
+        • Requisitos: 
+        - Diplomado de secundaria o equivalente 
+        - Excelentes habilidades de comunicación verbal y escrita
+        - Capacidad para interactuar de manera efectiva con clientes, empleados y proveedores.
+        - Habilidad para manejar múltiples tareas y mantenerse organizado en un entorno de ritmo rápido.
         </pre>
     </form>
   </section>
