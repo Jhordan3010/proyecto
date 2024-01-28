@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <h1>Entrevista Gerente General</h1>
+        <h1>Evaluación Gerente General</h1>
     </header>
     <main>
         <section>

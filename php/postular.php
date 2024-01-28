@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Iniciar Sesión</title>
+  <title>Postulación</title>
   <link rel="stylesheet" href="../css/postula.css">
 
 </head>
@@ -93,7 +93,7 @@
 
         <div>
         <ul>
-            <h4>MECANICO</h4>
+            <h4>MECÁNICO</h4>
             <b>Principales responsabilidades: </b>
             <li>Diagnosticar y reparar problemas eléctricos y electrónicos en vehículos </li>
             <li>Trabajar en sistemas mecánicos, como motores, transmisiones y sistemas de suspensión</li>

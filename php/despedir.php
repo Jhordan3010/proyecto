@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../css/despedi.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
-    <title>Recursos humanos</title>
+    <title>Despedir Empleado</title>
     <script src="../JavaScript/liquidacion.js"></script>
 </head>
 <body>
