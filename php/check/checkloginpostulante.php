@@ -15,36 +15,46 @@ function conectar($dbname) {
     return $conn;
 }
 
-// Conectarse al servidor y abrir la base de datos
-$conn = conectar("midb_proyecto");
-
-// Tomar los datos ingresados en el input
-$input_username = $_POST['username'];
-$input_password = $_POST['password'];
+// Conectarse al servidor y abrir la base de datos  
+$conn = conectar ("midb_proyecto"); 
+   
+// tomar los datos ingresador en el input
+$username = $_POST['username'];
+$password = $_POST['password'];
 
 // Consultar si el Usuario existe en la tabla de usuarios
-$sql = "SELECT * FROM usuario WHERE username=?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $input_username);
-$stmt->execute();
-$result = $stmt->get_result();
+$sql = "Select * from usuario WHERE username='$username';";
+$query = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    
-    // Comparar la contraseña almacenada en la base de datos con la proporcionada en el formulario
-    if (password_verify($input_password, $row['passwd'])) {
-        $_SESSION['username'] = $input_username;
-        header("location: ../perfil.php");
-        exit();
-    } else {
-        print '<script>alert("Contraseña Incorrecta!");</script>';
-        print '<script>window.location.assign("../login.php");</script>';
+$user = "";
+$passw = "";
+
+if ($query->num_rows > 0) { // Comprobar si existe el nombre de usuario 
+    // datos de salida de cada fila de la tabla
+
+
+    while($row = $query->fetch_assoc()) // mostrar todas las filas de la consulta 
+    {
+        $user = $row['username'];       //la primera fila de nombre de usuario es
+        $passw = $row['passwd'];      // pasado a $user, y a $passw
+                                        // y así sucesivamente hasta que finalice la consulta 
+        if(($username == $user) && ($password == $passw)) // comprobar si hay campos coincidentes 
+        {
+            $_SESSION['user'] = $username;    // establecer el nombre de usuario en una sesión.
+                                              // Esto sirve como variable global 
+            header("location:../perfil.php");    // redirige al usuario autenticado
+                                              // a la página de inicio 
+        }
+        else
+        {
+            Print '<script>alert("Contraseña Incorrecta!");</script>';        // Prompts a usuario
+            Print '<script>window.location.assign("loggin-postulante.php");</script>';    // redirige a página login.php
+        }
     }
-} else {
-    print '<script>alert("Nombre de Usuario Incorrecto!");</script>';
-    print '<script>window.location.assign("../login.php");</script>';
 }
-
+else {
+    Print '<script>alert("Nombre de Usuario Incorrecto!");</script>';   // Prompts a usuario
+    Print '<script>window.location.assign("loggin-postulante.php");</script>';      // redirige a página login.php
+    }
 $conn->close();
 ?>

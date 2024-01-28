@@ -1,32 +1,4 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$username = $_SESSION['username'];
-$conn = conectar("midb_proyecto");
-
-$sql = "SELECT * FROM usuario WHERE id=?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    // Ajusta los nombres de los campos según tu estructura de tabla
-    $nombre = $row['nombre']; 
-    $apellido = $row['apellido'];
-
-    // Obtén el ID del usuario
-    $usuarioID = $row['id']; 
-}
-
-$stmt->close();
-?>
+<!-- -->
 
 <!DOCTYPE html>
 <html lang="en">
