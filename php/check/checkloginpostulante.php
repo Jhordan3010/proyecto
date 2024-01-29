@@ -48,13 +48,13 @@ if ($query->num_rows > 0) { // Comprobar si existe el nombre de usuario
         else
         {
             Print '<script>alert("Contraseña Incorrecta!");</script>';        // Prompts a usuario
-            Print '<script>window.location.assign("loggin-postulante.php");</script>';    // redirige a página login.php
+            Print '<script>window.location.assign("../login.php");</script>';    // redirige a página login.php
         }
     }
 }
 else {
     Print '<script>alert("Nombre de Usuario Incorrecto!");</script>';   // Prompts a usuario
-    Print '<script>window.location.assign("loggin-postulante.php");</script>';      // redirige a página login.php
+    Print '<script>window.location.assign("../login.php");</script>';      // redirige a página login.php
     }
 $conn->close();
 ?>
