@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
     <title>Evaluar Empleado</title>
-    <link rel="stylesheet" href="../css/evaluar.css">
+    <link rel="stylesheet" href="../../css/evaluar.css">
 </head>
 <body>  
     <header>
@@ -13,7 +13,7 @@
 
     <main>
         <section>
-            <img src="../imagenes/renault.png" alt="renault">
+            <img src="../../imagenes/renault.png" alt="renault">
             <article class="buscar-info">
                 <form method="post" action="">
                     <label for="cedula">Cédula Empleado</label>

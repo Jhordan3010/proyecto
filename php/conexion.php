@@ -20,10 +20,10 @@
    
     // tomar los datos ingresador en el input
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['passwd'];
 
     // Consultar si el Usuario existe en la tabla de usuarios
-    $sql = "Select * from usuario WHERE name='$username';";
+    $sql = "Select * from postulante WHERE username='$username';";
     $query = $conn->query($sql);
  
     $user = "";
@@ -35,14 +35,14 @@
 
         while($row = $query->fetch_assoc()) // mostrar todas las filas de la consulta 
         {
-            $user = $row['name'];       //la primera fila de nombre de usuario es
-            $passw = $row['contraseña'];      // pasado a $user, y a $passw
+            $user = $row['username'];       //la primera fila de nombre de usuario es
+            $passw = $row['passwd'];      // pasado a $user, y a $passw
                                             // y así sucesivamente hasta que finalice la consulta 
             if(($username == $user) && ($password == $passw)) // comprobar si hay campos coincidentes 
             {
                 $_SESSION['user'] = $username;    // establecer el nombre de usuario en una sesión.
                                                   // Esto sirve como variable global 
-                header("location:../php/postular.php");    // redirige al usuario autenticado
+                header("location:../html/menu-postulante.php");    // redirige al usuario autenticado
                                                   // a la página de inicio 
             }
             else

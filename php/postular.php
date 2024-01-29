@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Postulación</title>
-  <link rel="stylesheet" href="../css/postula.css">
-
+  <link rel="stylesheet" href="../css/postular.css">
+  <script src="../JavaScript/fecha.js" defer></script>
 </head>
 
 <body>
@@ -43,13 +43,15 @@
         <article class="input-group">
           <label for="cargo_postulante">Cargo a Postular</label>
           <select id="cargo" name="cargo">
-            <option value="" disabled selected>Seleccione un cargo</option>
-            <option value="Gerente de Ventas">Gerente de Ventas</option>
-            <option value="Gerente General">Gerente General</option>
-            <option value="Mecánico">Mecánico</option>
-            <option value="Recepcionista">Recepcionista</option>
+            <option value="" selected>Seleccione un cargo</option>
+            <option value="Gerente de Ventas" data-fechalimite="2024-01-29">Gerente de Ventas</option>
+            <option value="Gerente General" data-fechalimite="2024-01-29">Gerente General</option>
+            <option value="Mecánico" data-fechalimite="2024-01-29 ">Mecánico</option>
+            <option value="Recepcionista" data-fechalimite="2024-01-26">Recepcionista</option>
           </select>
         </article>
+        <div id="message-container" class="message"></div>
+
 
         <article class="documentos">
           <div class="adjuntos1">
@@ -78,21 +80,21 @@
       <article>
         <div>
           <h4>GERENTE DE VENTAS</h4>
-            <ul>
-              <b>Principales responsabilidades: </b>
-              <li>Desarrollo de estrategias de ventas </li>
-              <li>Establecimiento de metas y objetivos </li>
-              <b>Requisitos:</b> 
-              <li>Título en Administración de Empresas o carreras afines</li>
-              <li>Elevado nivel de relaciones interpersonales</li>
-              <li>Manejar situaciones imprevistas y resolver problemas de manera eficiente</li>
-              <li>Habilidades de liderazgo</li>
-            </ul>
+          <ul>
+            <b>Principales responsabilidades: </b>
+            <li>Desarrollo de estrategias de ventas </li>
+            <li>Establecimiento de metas y objetivos </li>
+            <b>Requisitos:</b>
+            <li>Título en Administración de Empresas o carreras afines</li>
+            <li>Elevado nivel de relaciones interpersonales</li>
+            <li>Manejar situaciones imprevistas y resolver problemas de manera eficiente</li>
+            <li>Habilidades de liderazgo</li>
+          </ul>
 
         </div>
 
         <div>
-        <ul>
+          <ul>
             <h4>MECÁNICO</h4>
             <b>Principales responsabilidades: </b>
             <li>Diagnosticar y reparar problemas eléctricos y electrónicos en vehículos </li>
@@ -102,7 +104,7 @@
             <li>Formación técnica en mecánica automotriz, preferiblemente con certificaciones o cursos adicionales.</li>
             <li>Amplios conocimientos en sistemas mecánicos, eléctricos y electrónicos de vehículos.</li>
 
-          </ul> 
+          </ul>
         </div>
       </article>
 
@@ -125,7 +127,7 @@
         </div>
         <div>
 
-        <h4>RECEPCIONISTA</h4>
+          <h4>RECEPCIONISTA</h4>
           <ul>
             <b>Principales responsabilidades: </b>
             <li>Proporcionar información básica sobre los servicios y productos de la concesionaria.</li>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/evaluacion.css">
+    <link rel="stylesheet" href="../../css/evaluacion.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluación de Satisfacción</title>
 </head>
@@ -12,7 +12,7 @@
     </header>
     <main>
         <section>
-            <img src="../imagenes/renault.png" alt="">
+            <img src="../../imagenes/renault.png" alt="">
             <form method="post"> <!-- Cambiado action y agregado method -->
 
                 <h3>¿Cómo calificaría su experiencia general en la concesionaria?</h3>
