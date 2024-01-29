@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="../css/loggin-postulante.css">
+    <link rel="stylesheet" href="../css/loggin-postulantes.css">
     <script>
         function enviarValor() {
     var valor = document.getElementById('username').value;
