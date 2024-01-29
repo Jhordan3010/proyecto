@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="../css/menus.css">
+    <link rel="stylesheet" href="../../css/menus.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1, initial-scale=1.0">
     <title>Evaluación de Trabajo</title>

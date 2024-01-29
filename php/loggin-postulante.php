@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="../css/loggin-postulante.css">
-
+    <script>
+        function enviarValor() {
+    var valor = document.getElementById('username').value;
+    localStorage.setItem('valorCompartido', valor);
+    window.location.href = 'perfil-postulante.php';
+}
+    </script>
     
   </head>
   <body>
@@ -28,11 +34,14 @@
     
           <section class="input-group">
             <label for="password">Ingrese Contraseña:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="passwd" name="passwd" required>
           </section>
-          <button type="submit">Iniciar Sesión</button>
+          <button type="submit" onclick="enviarValor()">Iniciar Sesión</button>
     
         </form>
+        <a href="sesionpostulante.php">
+          <button  >Registrarse</button>
+        </a>
 
 
       </article>

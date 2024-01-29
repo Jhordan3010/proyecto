@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/evaluacion-general.css"> 
+    <link rel="stylesheet" href="../../css/evaluacion-general.css"> 
     <meta charset="UTF-8">
     <title>Resultados de Evaluación de Satisfacción</title>
 

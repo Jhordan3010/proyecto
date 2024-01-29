@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lista de Empleados</title>
-    <link rel="stylesheet" href="../css/listaempleado.css">
+    <link rel="stylesheet" href="../../css/listaempleado.css">
 </head>
 <body>
 <header>
