@@ -42,10 +42,10 @@
 
         <article class="input-group">
           <label for="cargo_postulante">Cargo a Postular</label>
-          <select id="cargo" name="cargo">
+          <select id="cargo" name="cargo_postulante">
             <option value="" selected>Seleccione un cargo</option>
             <option value="Gerente de Ventas" data-fechalimite="2024-01-29">Gerente de Ventas</option>
-            <option value="Gerente General" data-fechalimite="2024-01-29">Gerente General</option>
+            <option value="Gerente General" data-fechalimite="2024-01-30">Gerente General</option>
             <option value="Mecánico" data-fechalimite="2024-01-29 ">Mecánico</option>
             <option value="Recepcionista" data-fechalimite="2024-01-26">Recepcionista</option>
           </select>
@@ -215,8 +215,8 @@
         move_uploaded_file($_FILES["estudios"]["tmp_name"], $ruta_estudios);
 
         // Insertar en la tabla postulante
-        $sqlInsertPostulante = "INSERT INTO postulante (id_persona, cargo_postulante, cv, cedula_escaneada, estudios_postulante) 
-                                    VALUES ('$id_persona', '$cargo', '$ruta_cv', '$ruta_cedula', '$ruta_estudios')";
+        $sqlInsertPostulante = "INSERT INTO postulante (id_persona, cv, cedula_escaneada, estudios_postulante, cargo_postulante) 
+                                    VALUES ('$id_persona', '$ruta_cv', '$ruta_cedula', '$ruta_estudios','$cargo')";
         $resultInsertPostulante = $conn->query($sqlInsertPostulante);
 
         if ($resultInsertPostulante === FALSE) {

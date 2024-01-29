@@ -82,7 +82,7 @@
                     exit;
                 }
 
-                $conn = conectar("login");
+                $conn = conectar("midb_proyecto");
 
                 // Consulta preparada
                 $sqlInsertUsuario = "INSERT INTO postulante (CI, nombre, apellido, direccion, telefono, correo, username, passwd) 

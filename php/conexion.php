@@ -16,14 +16,14 @@
         }
 
     // Conectarse al servidor y abrir la base de datos  
-    $conn = conectar ("login"); 
+    $conn = conectar ("midb_proyecto"); 
    
     // tomar los datos ingresador en el input
     $username = $_POST['username'];
     $password = $_POST['passwd'];
 
     // Consultar si el Usuario existe en la tabla de usuarios
-    $sql = "Select * from postulante WHERE username='$username';";
+    $sql = "Select * from sesion WHERE username='$username';";
     $query = $conn->query($sql);
  
     $user = "";

@@ -30,13 +30,13 @@
                     $username = $_POST['username'];
 
                     // Lógica para obtener la información del postulante por su username
-                    $conn = new mysqli('localhost', 'root', 'root', 'login', 3306);
+                    $conn = new mysqli('localhost', 'root', 'root', 'midb_proyecto', 3306);
 
                     if ($conn->connect_error) {
                         die("Conexión a base de datos falló: " . $conn->connect_error);
                     }
 
-                    $sql = "SELECT * FROM postulante WHERE username=?";
+                    $sql = "SELECT * FROM sesion WHERE username=?";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $username);
                     $stmt->execute();
@@ -81,13 +81,13 @@
                     $telefono = $_POST['telefono'];
                     $correo = $_POST['correo'];
 
-                    $conn = new mysqli('localhost', 'root', 'root', 'login', 3306);
+                    $conn = new mysqli('localhost', 'root', 'root', 'midb_proyecto', 3306);
 
                     if ($conn->connect_error) {
                         die("Conexión a base de datos falló: " . $conn->connect_error);
                     }
 
-                    $sql = "UPDATE postulante SET CI=?, nombre=?, apellido=?, direccion=?, telefono=?, correo=? WHERE username=?";
+                    $sql = "UPDATE sesion SET CI=?, nombre=?, apellido=?, direccion=?, telefono=?, correo=? WHERE username=?";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("sssssss", $ci, $nombre, $apellido, $direccion, $telefono, $correo, $guardar_username);
                     $stmt->execute();
