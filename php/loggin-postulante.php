@@ -40,7 +40,7 @@
     
         </form>
         <a href="sesionpostulante.php">
-          <button  >Registrarse</button>
+          <button  >Crear Cuenta</button>
         </a>
 
 
