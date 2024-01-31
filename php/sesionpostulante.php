@@ -85,7 +85,7 @@
                 $conn = conectar("midb_proyecto");
 
                 // Consulta preparada
-                $sqlInsertUsuario = "INSERT INTO postulante (CI, nombre, apellido, direccion, telefono, correo, username, passwd) 
+                $sqlInsertUsuario = "INSERT INTO sesion (CI, nombre, apellido, direccion, telefono, correo, username, passwd) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
                 $stmt = $conn->prepare($sqlInsertUsuario);

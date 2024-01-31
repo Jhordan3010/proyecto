@@ -42,7 +42,7 @@
             {
                 $_SESSION['user'] = $username;    // establecer el nombre de usuario en una sesión.
                                                   // Esto sirve como variable global 
-                header("location:../html/menu-postulante.php");    // redirige al usuario autenticado
+                header("location:../html/menu-postulante.html");    // redirige al usuario autenticado
                                                   // a la página de inicio 
             }
             else

@@ -100,7 +100,7 @@
             $conn->close();
             ?>
 
-            <a href="../html/menu.html" class="menu-button">Ir al Menú</a>
+            <a href="../../html/menu.html" class="menu-button">Ir al Menú</a>
         </section>
     </main>
 </body>

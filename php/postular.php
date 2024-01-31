@@ -44,9 +44,9 @@
           <label for="cargo_postulante">Cargo a Postular</label>
           <select id="cargo" name="cargo_postulante">
             <option value="" selected>Seleccione un cargo</option>
-            <option value="Gerente de Ventas" data-fechalimite="2024-01-29">Gerente de Ventas</option>
-            <option value="Gerente General" data-fechalimite="2024-01-30">Gerente General</option>
-            <option value="Mecánico" data-fechalimite="2024-01-29 ">Mecánico</option>
+            <option value="Gerente de Ventas" data-fechalimite="2024-02-29">Gerente de Ventas</option>
+            <option value="Gerente General" data-fechalimite="2024-02-30">Gerente General</option>
+            <option value="Mecánico" data-fechalimite="2024-02-29 ">Mecánico</option>
             <option value="Recepcionista" data-fechalimite="2024-01-26">Recepcionista</option>
           </select>
         </article>

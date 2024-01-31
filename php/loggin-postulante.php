@@ -7,7 +7,7 @@
     <script>
         function enviarValor() {
     var valor = document.getElementById('username').value;
-    localStorage.setItem('valorCompartido', valor);
+    localStorage.setItem('valorCompartido', valor);45
     window.location.href = 'perfil-postulante.php';
 }
     </script>
